@@ -27,7 +27,8 @@
             /// Nossos modulos da aplicacao precisam ser importados
             'app.cliente',
 
-            
+            //Módulo usuário
+            'app.usuario',
 
 
         ]);

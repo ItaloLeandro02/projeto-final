@@ -1,0 +1,62 @@
+<md-toolbar class="md-accent md-hue-2">
+    <div class="md-toolbar-tools">
+        <md-icon flex="5" md-font-icon="icon-account-plus"></md-icon>
+        <span flex="30">Novo Usuário</span>
+        <span flex></span>
+        <md-button class="md-raised md-warn" aria-label="Favorite">
+            SALVAR     
+        </md-button>
+    </div>
+</md-toolbar>
+  
+  <md-card class="default-padding m-20">
+    <form name="vm.form">
+        <md-content class="md-no-momentum">
+            <md-input-container class="md-icon-float md-block">
+                <label>Nome</label>
+                    <md-icon md-font-icon="icon-account" class="name"></md-icon>
+                        <input required ng-model="vm.name" name="nome" minlength="3" md-maxlength="60" type="text">
+                            <div ng-messages="vm.form.nome.$error">
+                                <div ng-message="required">O nome é obrigatório!</div>
+                                <div ng-message="minlength">O nome deve conter no mínimo 3 caracteres.</div>
+                                <div ng-message="md-maxlength">O nome deve conter no máximo 60 caracteres.</div>
+                            </div>
+            </md-input-container>
+            <md-input-container class="md-icon-float md-block">
+                <label>Email</label>
+                    <md-icon md-font-icon="icon-email" class="email"></md-icon>
+                        <input required ng-model="vm.email" name="email" md-maxlength="60" type="email">
+                            <div ng-messages="vm.form.email.$error">
+                                <div ng-message="required">Email é obrigatório!</div>
+                                <div ng-message="md-maxlength">O email deve conter no máximo 60 caracteres.</div>
+                            </div>
+            </md-input-container>
+            <md-input-container class="md-icon-float md-block">
+                <label>Senha</label>
+                    <md-icon md-font-icon="icon-key-variant"></md-icon>
+                        <input required ng-model="vm.senha" name="senha" minlength="5" md-maxlength="32" type="password">
+                            <div ng-messages="vm.form.senha.$error">
+                                <div ng-message="required">A senha é obrigatória!</div>
+                                <div ng-message="minlength">A senha deve conter no mínimo 5 caracteres.</div>
+                                <div ng-message="md-maxlength">A senha deve conter no máximo 32 caracteres.</div>
+                            </div>
+            </md-input-container>
+            <md-input-container class="md-icon-float md-block">
+                <label>Confirme a Senha</label>
+                    <md-icon md-font-icon="icon-key-variant"></md-icon>
+                        <input required ng-model="vm.confirmaSenha" ng-pattern="vm.senha" name="confirmaSenha" minlength="5" md-maxlength="32" type="password">
+                            <div ng-messages="vm.form.confirmaSenha.$error">
+                                <div ng-message="required">Confirme a senha!</div>
+                                <div ng-message="minlength">A senha deve conter no mínimo 5 caracteres.</div>
+                                <div ng-message="md-maxlength">A senha deve conter no máximo 32 caracteres.</div>
+                                <div ng-message="md-maxlength">A senha deve conter no máximo 32 caracteres.</div>
+                                <div ng-message="pattern">As senhas não conferem!.</div>
+                            </div>
+            </md-input-container>
+            <md-input-container class="md-icon-float md-block">
+                <md-switch ng-model="vm.administrador" aria-label="Administrador?" ng-true-value="'yup'" ng-false-value="'nope'" class="md-warn">
+                    Switch 2 (md-warn): {{ data.cb2 }}
+                </md-switch>
+            </md-input-container>
+    </form>
+  </md-card>
