@@ -52,7 +52,7 @@
                 contrato: vm.contrato
             }
 
-            console.log(newCliente)
+           
         }
         
     }
