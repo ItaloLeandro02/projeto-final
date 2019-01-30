@@ -65,8 +65,35 @@
             </md-input-container>
             <div layout="row" layout-align="end">
                 <md-button class="md-warn">Cancelar</md-button> 
-                <md-button class="md-raised md-accent" type="submit" ng-click="vm.salvar()">Salvar</md-button>
+                <md-button class="md-raised md-accent" ng-click="vm.salvar()">Salvar</md-button>
             </div>
             </div>
     </form>
+  </md-card>
+  <md-card>
+    <md-toolbar class="md-accent md-hue-2">
+        <div class="md-toolbar-tools">
+            <span flex="30">Permissões</span>
+            <span flex></span>
+        </div>
+    </md-toolbar>
+    <div layout="row"> 
+        <div layout="column" flex>
+            <h2>Clientes</h2>
+                <div flex-gt-sm="50" ng-repeat="permissao in vm.permissoes">
+                    <md-checkbox ng-checked="vm.exists(permissao, vm.permissoesSelecionadasClientes)" ng-click="vm.toggle(permissao, vm.permissoesSelecionadasClientes)">
+                    {{ permissao }} <span ng-if="vm.exists(permissao, vm.permissoesSelecionadasClientes)"></span>
+                    </md-checkbox>
+                </div>
+        </div>
+        <div layout="column" flex>
+            <h2>Usuários</h2>
+                <div flex-gt-sm="50" ng-repeat="permissao in vm.permissoes">
+                    <md-checkbox ng-checked="vm.exists(permissao, vm.permissoesSelecionadasUsuarios)" ng-click="vm.toggle(permissao, vm.permissoesSelecionadasUsuarios)">
+                    {{ permissao }} <span ng-if="vm.exists(permissao, vm.permissoesSelecionadasUsuarios)"></span>
+                    </md-checkbox>
+                </div>
+        </div>
+    </div>
+
   </md-card>

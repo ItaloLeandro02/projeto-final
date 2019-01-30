@@ -24,7 +24,6 @@
                     <label>Senha</label>
                         <md-icon md-font-icon="icon-key-variant"></md-icon>
                             <input required ng-model="vm.data.senha" name="senha" ng-init="vm.data.senha = '123456'" minlength="5" md-maxlength="32" type="{{vm.tipo}}">
-                            <input required ng-model="vm.data.senha" name="senha" minlength="5" md-maxlength="32" type="password">
                                 <div ng-messages="vm.form.senha.$error">
                                     <div ng-message="required">A senha é obrigatória!</div>
                                     <div ng-message="minlength">A senha deve conter no mínimo 5 caracteres.</div>
