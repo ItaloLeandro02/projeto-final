@@ -4,15 +4,15 @@
 
     angular
         .module('app.cliente')
-        .controller('ListaClienteController', ListaClienteController);
+        .controller('ClienteController', ClienteController);
 
     /** @ngInject */
-    function ListaClienteController(clienteService,$state)
+    function ClienteController(clienteService,$state,clienteId)
     {
         var vm = this;
 
         vm.novoCliente = novoCliente;
-        vm.editar = editar;
+        vm.salvar = salvar;
 
         vm.gridService = {
             query : {
@@ -32,6 +32,11 @@
 
         function init(){
             vm.gridService.loadData()
+            /*if (clienteId) {
+                clienteService.getById(clienteId).then(function(resposta){
+                    vm.ds = resposta.data
+                })
+            }*/
         }
         init()
 
@@ -39,8 +44,15 @@
             $state.go('app.novoCliente')
         }
 
-        function editar(clienteId){
-            $state.go('app.editaCliente', {id : clienteId})
+        function salvar(){
+            var newCliente = {
+                nome : vm.nome,
+                cpf  : vm.cpf,
+                cnpj : vm.cnpj,
+                contrato: vm.contrato
+            }
+
+            console.log(newCliente)
         }
         
     }

@@ -17,6 +17,12 @@
                     'content@app': {
                         templateUrl: 'app/main/cliente/lista/lista.view.html',
                         controller : 'ListaClienteController as vm'
+                    },
+                    resolve : {
+                        clienteId : function($stateParams){
+                            console.log('Modulo: ' + $stateParams.id)
+                            return $stateParams.id;
+                        }    
                     }
                 }
             })
@@ -28,6 +34,22 @@
                         controller : 'ClienteController as vm'
                     }
                 }
+            })
+            .state('app.editaCliente', {
+                url    : '/cliente/editar/:id',
+                views  : {
+                    'content@app': {
+                        templateUrl: 'app/main/cliente/formulario/editar.view.html',
+                        controller : 'ClienteController as vm'
+                    }
+                },
+                resolve : {
+                    clienteId : function($stateParams){
+                        console.log('Modulo: ' + $stateParams.id)
+                        return $stateParams.id;
+                    }    
+                }
+                
             });
         
 

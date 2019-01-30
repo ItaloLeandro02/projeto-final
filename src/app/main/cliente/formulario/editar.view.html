@@ -1,7 +1,7 @@
 <md-toolbar class="md-accent md-hue-2">
     <div class="md-toolbar-tools">
         <md-icon flex="5" md-font-icon="icon-person-box"></md-icon>
-        <span flex="30">Novo cliente</span>
+        <span flex="30">Editar cliente</span>
         <span flex></span>
         <md-button class="md-raised md-warn" aria-label="Favorite" ng-click="vm.salvar()" ng-disabled="novoClienteForm.$invalid">
             Salvar     
@@ -15,7 +15,7 @@
             <!-- Use floating label instead of placeholder -->
             <label>Nome</label>
             <md-icon md-font-icon="icon-account" class="name"></md-icon>
-            <input ng-model="vm.nome" type="text">
+            <input ng-model="vm.ds.nome" type="text">
           </md-input-container>
           
         <div layout="row">

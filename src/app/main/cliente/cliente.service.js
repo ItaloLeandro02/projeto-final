@@ -19,6 +19,7 @@
         {
             var data = [
                {
+                   id           : 2,
                    nome         : 'Adsoft Gestão Empresarial Ltda',
                    cnpj         : '01.255.366/0001-58',
                    cpf          : '',
@@ -30,6 +31,7 @@
                    androidPedidos : false 
                 },
                 {
+                    id           : 3,
                     nome         : 'Adsoft Gestão Empresarial Ltda',
                     cnpj         : '01.255.366/0001-58',
                     cpf          : '',
@@ -41,6 +43,7 @@
                     androidPedidos : false 
                  },
                  {
+                    id             : 4,
                     nome         : 'Adsoft Gestão Empresarial Ltda',
                     cnpj         : '01.255.366/0001-58',
                     cpf          : '',
