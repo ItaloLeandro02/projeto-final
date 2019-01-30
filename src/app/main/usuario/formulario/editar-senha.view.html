@@ -1,0 +1,46 @@
+<md-toolbar class="md-accent md-hue-2">
+    <div class="md-toolbar-tools">
+        <md-icon flex="5" md-font-icon="icon-cog"></md-icon>
+        <span flex="30">Editar Senha</span>
+        <span flex></span>
+    </div>
+</md-toolbar>
+      <md-card class="default-padding m-10">
+        <form name="vm.form">
+               <md-input-container class="md-icon-float md-block">
+                    <label>Senha</label>
+                            <input required ng-model="vm.data.senha" name="senha" minlength="5" md-maxlength="32" type="password">
+                                <div ng-messages="vm.form.senha.$error">
+                                    <div ng-message="required">A senha é obrigatória!</div>
+                                    <div ng-message="minlength">A senha deve conter no mínimo 5 caracteres.</div>
+                                    <div ng-message="md-maxlength">A senha deve conter no máximo 32 caracteres.</div>
+                                </div>
+                </md-input-container>
+                 <md-input-container class="md-icon-float md-block">
+                    <label>Nova senha</label>
+                            <input required ng-model="vm.data.novaSenha" name="novaSenha" minlength="5" md-maxlength="32" type="password" ng-match="vm.data.senha">
+                                <div ng-messages="vm.form.novaSenha.$error">
+                                    <div ng-message="required">Campo obrigatório!</div>
+                                    <div ng-message="minlength">A nova senha deve conter no mínimo 5 caracteres.</div>
+                                    <div ng-message="md-maxlength">A nova senha deve conter no máximo 32 caracteres.</div>
+                                    <!--<div ng-show="vm.data.senha == vm.data.novaSenha">A nova senha não pode ser a mesma senha anterior!.</div>-->
+                                </div>
+                </md-input-container>
+                 <md-input-container class="md-icon-float md-block">
+                    <label>Confirme a nova senha</label>
+                            <input required ng-model="vm.data.confirmaSenha" name="confimaSenha" ng-pattern="vm.data.novaSenha" minlength="5" md-maxlength="32" type="password">
+                                <div ng-messages="vm.form.confimaSenha.$error">
+                                    <div ng-message="required">Campo obrigatório!</div>
+                                    <div ng-message="minlength">A senha deve conter no mínimo 5 caracteres.</div>
+                                    <div ng-message="md-maxlength">A senha deve conter no máximo 32 caracteres.</div>
+                                     <div ng-message="pattern">As senhas não conferem!.</div>
+                                </div>
+                </md-input-container>
+
+                
+                <div layout="row" layout-align="end">
+                    <md-button class="md-warn" href="/usuario">Cancelar</md-button> 
+                    <md-button class="md-raised md-accent" type="submit" ng-click="vm.salvar()" ng-disabled="vm.form.$invalid">Salvar</md-button>
+                </div>
+        </form>
+      </md-card>

@@ -13,6 +13,7 @@
 
         vm.novoCliente = novoCliente;
         vm.editar = editar;
+        vm.view = view;
 
         vm.gridService = {
             query : {
@@ -41,6 +42,10 @@
 
         function editar(clienteId){
             $state.go('app.editaCliente', {id : clienteId})
+        }
+
+        function view(clienteId){
+            $state.go('app.viewCliente', {id : clienteId})
         }
         
     }

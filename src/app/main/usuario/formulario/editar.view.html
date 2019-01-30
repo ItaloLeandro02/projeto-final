@@ -1,6 +1,6 @@
 <md-toolbar class="md-accent md-hue-2">
         <div class="md-toolbar-tools">
-            <md-icon flex="5" md-font-icon="icon-account-plus"></md-icon>
+            <md-icon flex="5" md-font-icon="icon-cog"></md-icon>
             <span flex="30">Editar Usuário</span>
             <span flex></span>
         </div>
@@ -23,24 +23,18 @@
                 <md-input-container class="md-icon-float md-block" flex>
                     <label>Senha</label>
                         <md-icon md-font-icon="icon-key-variant"></md-icon>
-                            <input required ng-model="vm.data.senha" name="senha" ng-init="vm.data.senha = '123456'" minlength="5" md-maxlength="32" type="password">
+                            <input required ng-model="vm.data.senha" name="senha" ng-init="vm.data.senha = '123456'" minlength="5" md-maxlength="32" type="{{vm.tipo}}">
+                            <input required ng-model="vm.data.senha" name="senha" minlength="5" md-maxlength="32" type="password">
                                 <div ng-messages="vm.form.senha.$error">
                                     <div ng-message="required">A senha é obrigatória!</div>
                                     <div ng-message="minlength">A senha deve conter no mínimo 5 caracteres.</div>
                                     <div ng-message="md-maxlength">A senha deve conter no máximo 32 caracteres.</div>
                                 </div>
                 </md-input-container>
-                <md-input-container class="md-icon-float md-block" flex ng-show="vm.form.senha.$valid">
-                    <label>Confirme a Senha</label>
-                        <md-icon md-font-icon="icon-key-variant"></md-icon>
-                            <input required ng-model="vm.data.confirmaSenha" ng-pattern="vm.data.senha" name="confirmaSenha" minlength="5" md-maxlength="32" type="password">
-                                <div ng-messages="vm.form.confirmaSenha.$error">
-                                    <div ng-message="required">Confirme a senha!</div>
-                                    <div ng-message="minlength">A senha deve conter no mínimo 5 caracteres.</div>
-                                    <div ng-message="md-maxlength">A senha deve conter no máximo 32 caracteres.</div>
-                                    <div ng-message="md-maxlength">A senha deve conter no máximo 32 caracteres.</div>
-                                    <div ng-message="pattern">As senhas não conferem!.</div>
-                                </div>
+                <md-input-container>
+                    <md-button aria-label="Exibir senha"> 
+                        <md-icon md-font-icon="{{vm.status}}" ng-click="vm.mudarStatus(vm.status)" flex></md-icon>
+                    </md-button>
                 </md-input-container>
                 </div>
                 <div layout="column">

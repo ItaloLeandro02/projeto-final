@@ -44,6 +44,22 @@
                     }    
                 }
                 
+            })
+            .state('app.viewCliente', {
+                url    : '/cliente/view/:id',
+                views  : {
+                    'content@app': {
+                        templateUrl: 'app/main/cliente/formulario/viewCliente.view.html',
+                        controller : 'ClienteController as vm'
+                    }
+                },
+                resolve : {
+                    clienteId : function($stateParams){
+                        console.log('Modulo: ' + $stateParams.id)
+                        return $stateParams.id;
+                    }    
+                }
+                
             });
         
 
