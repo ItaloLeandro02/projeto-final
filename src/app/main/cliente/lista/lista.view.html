@@ -1,10 +1,18 @@
+<style>
+ 
+</style>
 <md-toolbar class="md-accent md-hue-2">
     <div class="md-toolbar-tools">
         <md-icon flex="5" md-font-icon="icon-person-box"></md-icon>
         <span flex="30">Lista de clientes</span>
         <span flex></span>
-        <md-button class="md-raised md-warn" aria-label="Favorite" ng-click="vm.novoCliente()">
-            + ADICIONAR    
+        <md-button class="md-raised md-primary md-hue-2" aria-label="Favorite" ng-click="vm.novoCliente()">
+            <md-icon flex="5" md-font-icon="icon-account-plus"></md-icon>    
+            Adicionar 
+        </md-button>
+        <md-button class="md-raised md-primary md-hue-2" aria-label="Favorite" ng-click="vm.filtrar()">
+            <md-icon flex="5" md-font-icon="icon-filter"></md-icon>  
+            Filtrar
         </md-button>
     </div>
 </md-toolbar>
@@ -12,7 +20,7 @@
   <md-card class="default-padding m-20">
     <!-- exact table from live demo -->
   <md-table-container>
-    <table md-table md-row-select="false" multiple ng-model="vm.gridService.selected" md-progress="promise">
+    <table md-table md-row-select="false" multiple ng-model="vm.gridService.selected" md-progress="promise" >
       <thead md-head md-order="vm.gridService.query.order" md-on-reorder="vm.gridService.loadData">
         <tr md-row>
           <th md-column md-order-by="nome"><span>Cliente</span></th>          
@@ -29,9 +37,9 @@
           </th>          
         </tr>
       </thead>
-      <tbody md-body>
+      <tbody md-body id="customers">
         <tr md-row md-select="record" md-select-id="id" md-auto-select 
-        ng-repeat="record in vm.data">
+        ng-repeat="record in vm.data" style="cursor:pointer"  ng-click="vm.view(record.id)">
           <td md-cell>{{record.nome}}</td>
           <td md-cell>{{record.cnpj}}</td>
           <td md-cell>{{record.cpf}}</td>
@@ -43,8 +51,9 @@
           <td md-cell>{{record.androidPedidos}}</td>    
           <td md-cell>
             <md-button class="md-icon-button" aria-label="Favorite" ng-click="vm.editar(record.id)">
+                <md-tooltip md-direction="top">Editar</md-tooltip>  
                 <md-icon md-font-icon="icon-pencil"></md-icon>
-              </md-button>
+            </md-button>
           </td>          
         </tr>
       </tbody>
