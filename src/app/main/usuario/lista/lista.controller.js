@@ -9,8 +9,8 @@
     /** @ngInject */
     function ListaUsuarioController(usuarioService, $state, $stateParams)
     {
-        var vm      = this;
-        vm.editar   = editar
+        var vm          = this;
+        vm.editar       = editar
 
         function editar(usuarioId) {
             $state.go('app.editarUsuario', {id: usuarioId})
