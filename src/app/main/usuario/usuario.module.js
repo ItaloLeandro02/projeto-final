@@ -35,6 +35,20 @@
                     }    
                 }
             })
+            .state('app.editarInformacoes', {
+                url    : '/editar-informacoes/',
+                views  : {
+                    'content@app': {
+                        templateUrl: 'app/main/usuario/formulario/editar-informacoes.view.html',
+                        controller : 'UsuarioController as vm'
+                    }
+                },
+                resolve : {
+                    usuarioId : function($stateParams){
+                        return $stateParams.id;
+                    }    
+                }
+            })
             .state('app.editarUsuario', {
                 url    : '/usuario/editar/:id',
                 views  : {
@@ -55,6 +69,16 @@
             title    : 'Usuário',
             icon     : 'icon-account',
             state    : 'app.usuario',
+            /*stateParams: {
+                'param1': 'page'
+             },*/            
+            weight   : 1
+        });
+
+        msNavigationServiceProvider.saveItem('acesso.editar', {
+            title    : 'Alterar Informações',
+            icon     : 'icon-cog',
+            state    : 'app.editarInformacoes',
             /*stateParams: {
                 'param1': 'page'
              },*/            

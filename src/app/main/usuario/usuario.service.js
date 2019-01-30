@@ -19,6 +19,7 @@
         {
             var data = [
                 {
+                  id                  : 1,
                   email               : 'daniloduarte@hotmail.com',
                   nome                : 'Danilo Duarte',
                   senha               : '1234',
@@ -27,6 +28,7 @@
                 
                },
                {
+                  id                  : 1,
                   email               : 'ricardoliveira@hotmail.com',
                   nome                : 'Ricardo Oliveira',
                   senha               : '5678',
@@ -35,6 +37,7 @@
                 
                },
                {
+                  id                  : 1,
                   email               : 'italoleandro@hotmail.com',
                   nome                : 'Italo Leandro',
                   senha               : '13579',
@@ -43,6 +46,7 @@
                 
                },
                {
+                  id                  : 1,
                   email               : 'testemail@hotmail.com',
                   nome                : 'Teste Nome',
                   senha               : '24680',
