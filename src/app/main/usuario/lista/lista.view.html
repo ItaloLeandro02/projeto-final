@@ -3,7 +3,7 @@
         <md-icon flex="5" md-font-icon="icon-person-box"></md-icon>
         <span flex="30">Lista de usuarios</span>
         <span flex></span>
-        <md-button class="md-raised md-warn" aria-label="Favorite" ng-click="vm.novoUsuario()">
+        <md-button class="md-raised md-warn" aria-label="Favorite" ng-click="vm.novoUsuario()" href="usuario/novo">
             + ADICIONAR    
         </md-button>
     </div>
@@ -20,9 +20,6 @@
           <th md-column md-numeric>Senha</th>
           <th md-column md-numeric>Administrador</th>
           <th md-column md-numeric>Desativado</th>
-          <th md-column>Data Da Desativação</th>
-          <th md-column>Log Criação</th>          
-          <th md-column>Log Atualização</th>
           <th md-column>
 
           </th>          
@@ -36,9 +33,6 @@
           <td md-cell>{{record.senha}}</td>
           <td md-cell>{{record.administrador}}</td>
           <td md-cell>{{record.desativado}}</td>
-          <td md-cell>{{record.dataDesativacao| date : 'dd/MM/yyyy HH:mm'}}</td>
-          <td md-cell>{{record.logCriacao     | date : 'dd/MM/yyyy HH:mm'}}</td>
-          <td md-cell>{{record.logAtualizacao | date : 'dd/MM/yyyy HH:mm'}}</td>
           <td md-cell>
             <md-button class="md-icon-button" aria-label="Favorite">
                 <md-icon md-font-icon="icon-pencil"></md-icon>
