@@ -4,17 +4,18 @@
 
     angular
         .module('app.usuario')
-        .controller('UsuarioController', UsuarioController);
+        .controller('ListaUsuarioController', ListaUsuarioController);
 
     /** @ngInject */
-    function UsuarioController(usuarioService, usuarioId)
+    function ListaUsuarioController(usuarioService, $state, $stateParams)
     {
         var vm      = this;
-        vm.salvar   = salvar
+        vm.editar   = editar
 
-        function salvar() {
-            console.log(vm.nome, vm.administrador, vm.desativado)
+        function editar(usuarioId) {
+            $state.go('app.editarUsuario', {id: usuarioId})
         }
+
         vm.gridService = {
             query : {
                 order: 'nome',
@@ -31,11 +32,7 @@
         }
 
         function init(){
-            /*if(usuarioId) {
-                return usuarioService.getById(usuarioId).then(function(dados) {
-                    vm.data = records
-                })
-            }*/
+            vm.gridService.loadData()
         }
         init()
         

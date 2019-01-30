@@ -15,8 +15,8 @@
                 url    : '/usuario',
                 views  : {
                     'content@app': {
-                        //templateUrl: 'app/main/usuario/lista/lista.view.html',
-                        //controller : 'ListaUsuarioController as vm'
+                        templateUrl: 'app/main/usuario/lista/lista.view.html',
+                        controller : 'ListaUsuarioController as vm'
                     }
                 }
             })
@@ -27,6 +27,26 @@
                         templateUrl: 'app/main/usuario/formulario/novo.view.html',
                         controller : 'UsuarioController as vm'
                     }
+                },
+                resolve : {
+                    usuarioId : function($stateParams){
+                        console.log('Modulo: ' + $stateParams.id)
+                        return $stateParams.id;
+                    }    
+                }
+            })
+            .state('app.editarUsuario', {
+                url    : '/usuario/editar/:id',
+                views  : {
+                    'content@app': {
+                        templateUrl: 'app/main/usuario/formulario/editar.view.html',
+                        controller : 'UsuarioController as vm'
+                    }
+                },
+                resolve : {
+                    usuarioId : function($stateParams){
+                        return $stateParams.id;
+                    }    
                 }
             });
     
