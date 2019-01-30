@@ -36,7 +36,7 @@
                 }
             })
             .state('app.editarInformacoes', {
-                url    : '/editar-informacoes/',
+                url    : '/editar-informacoes',
                 views  : {
                     'content@app': {
                         templateUrl: 'app/main/usuario/formulario/editar-informacoes.view.html',
@@ -54,6 +54,20 @@
                 views  : {
                     'content@app': {
                         templateUrl: 'app/main/usuario/formulario/editar.view.html',
+                        controller : 'UsuarioController as vm'
+                    }
+                },
+                resolve : {
+                    usuarioId : function($stateParams){
+                        return $stateParams.id;
+                    }    
+                }
+            })
+            .state('app.mudarSenha', {
+                url    : '/mudar-senha',
+                views  : {
+                    'content@app': {
+                        templateUrl: 'app/main/usuario/formulario/editar-senha.view.html',
                         controller : 'UsuarioController as vm'
                     }
                 },
