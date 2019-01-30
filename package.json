@@ -1,7 +1,9 @@
 {
   "name": "fuse",
   "version": "1.4.3",
-  "dependencies": {},
+  "dependencies": {
+    "angular-input-masks": "^4.3.0"
+  },
   "scripts": {
     "test": "gulp test"
   },

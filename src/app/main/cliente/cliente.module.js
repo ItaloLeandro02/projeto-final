@@ -17,12 +17,6 @@
                     'content@app': {
                         templateUrl: 'app/main/cliente/lista/lista.view.html',
                         controller : 'ListaClienteController as vm'
-                    },
-                    resolve : {
-                        clienteId : function($stateParams){
-                            console.log('Modulo: ' + $stateParams.id)
-                            return $stateParams.id;
-                        }    
                     }
                 }
             })

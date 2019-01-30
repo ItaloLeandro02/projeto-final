@@ -3,19 +3,17 @@
         <md-icon flex="5" md-font-icon="icon-person-box"></md-icon>
         <span flex="30">Editar cliente</span>
         <span flex></span>
-        <md-button class="md-raised md-warn" aria-label="Favorite" ng-click="vm.salvar()" ng-disabled="novoClienteForm.$invalid">
-            Salvar     
-        </md-button>
+        
     </div>
 </md-toolbar>
   
   <md-card class="default-padding m-20">
     <form name="novoClienteForm">
-        <md-input-container class="md-icon-float md-block">
-            <!-- Use floating label instead of placeholder -->
+        <!-- <md-input-container class="md-icon-float md-block" >
+             Use floating label instead of placeholder 
             <label>Nome</label>
             <md-icon md-font-icon="icon-account" class="name"></md-icon>
-            <input ng-model="vm.ds.nome" type="text">
+            <input ng-model="vm.nome" type="text" >
           </md-input-container>
           
         <div layout="row">
@@ -25,7 +23,7 @@
           </md-input-container>
       
           <md-input-container class="md-block" flex>
-            <!-- Use floating placeholder instead of label -->
+             Use floating placeholder instead of label 
             <md-icon md-font-icon="icon-document" class="email"></md-icon>
             <input ng-model="vm.cnpj" type="text" placeholder="CNPJ" ng-required="true" ui-br-cnpj-mask>
           </md-input-container>
@@ -50,7 +48,7 @@
                   <md-option value="A">Aluguel</md-option>
                 </md-select>
             </md-input-container>
-          
+           -->
         </div>
         <div layout="row">
             <md-input-container class="md-block" flex>
@@ -89,4 +87,8 @@
             <md-icon md-svg-src="img/icons/ic_place_24px.svg"></md-icon>
           </md-input-container>
     </form>
+    <div layout="row" layout-align="end">
+      <md-button class="md-warn md-accent" href="/cliente">Cancelar</md-button> 
+      <md-button class="md-raised md-accent" type="submit" ng-click="vm.salvar()" ng-disabled="novoClienteForm.$invalid">Salvar</md-button>
+  </div>
   </md-card>

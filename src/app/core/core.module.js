@@ -15,6 +15,7 @@
                 'pascalprecht.translate',
                 'ui.router',
                 'ngStorage',
-                'md.data.table'
+                'md.data.table',
+                'ui.utils.masks'
             ]);
 })();

@@ -7,7 +7,7 @@
         .controller('ClienteController', ClienteController);
 
     /** @ngInject */
-    function ClienteController(clienteService,$state,clienteId)
+    function ClienteController(clienteService,$state)
     {
         var vm = this;
 
