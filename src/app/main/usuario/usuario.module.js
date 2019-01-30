@@ -25,7 +25,7 @@
                 views  : {
                     'content@app': {
                         templateUrl: 'app/main/usuario/formulario/novo.view.html',
-                        //controller : 'UsuarioController as vm'
+                        controller : 'UsuarioController as vm'
                     }
                 }
             });

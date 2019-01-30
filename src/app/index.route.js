@@ -13,8 +13,6 @@
         
         $urlRouterProvider.otherwise('/login');
 
-        console.log('ola')
-
         /**
          * Layout Style Switcher
          *

@@ -3,14 +3,18 @@
     'use strict';
 
     angular
-        .module('app.cliente')
-        .controller('ListaClienteController', ListaClienteController);
+        .module('app.usuario')
+        .controller('UsuarioController', UsuarioController);
 
     /** @ngInject */
-    function ListaClienteController(clienteService)
+    function UsuarioController(usuarioService)
     {
-        var vm = this;
+        var vm      = this;
+        vm.salvar   = salvar
 
+        function salvar() {
+            console.log(vm.nome, vm.administrador, vm.desativado)
+        }
         vm.gridService = {
             query : {
                 order: 'nome',
@@ -20,14 +24,13 @@
             selected : [],
 
             loadData : function(){
-                return clienteService.getDataMockup().then(function(records){
+                return usuarioService.getDataMockup().then(function(records){
                     vm.data = records
                 })   
             }
         }
 
         function init(){
-            vm.gridService.loadData()
         }
         init()
         
