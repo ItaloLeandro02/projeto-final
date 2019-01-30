@@ -40,7 +40,7 @@
           <td md-cell>{{record.logCriacao     | date : 'dd/MM/yyyy HH:mm'}}</td>
           <td md-cell>{{record.logAtualizacao | date : 'dd/MM/yyyy HH:mm'}}</td>
           <td md-cell>
-            <md-button class="md-icon-button" aria-label="Favorite">
+            <md-button class="md-icon-button" aria-label="Favorite" ng-click="vm.editar(record.id)">
                 <md-icon md-font-icon="icon-pencil"></md-icon>
               </md-button>
           </td>          
