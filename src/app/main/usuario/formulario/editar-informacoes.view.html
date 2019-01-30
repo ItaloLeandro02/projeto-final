@@ -5,7 +5,6 @@
         <span flex></span>
     </div>
 </md-toolbar>
-  
   <md-card class="default-padding m-20">
     <form name="vm.form">
         <md-content class="md-no-momentum">
@@ -19,6 +18,7 @@
                                 <div ng-message="md-maxlength">O nome deve conter no máximo 60 caracteres.</div>
                             </div>
             </md-input-container>
+              {{vm.data.nome}}
             <md-input-container class="md-icon-float md-block">
                 <label>Email</label>
                     <md-icon md-font-icon="icon-email" class="email"></md-icon>

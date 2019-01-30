@@ -78,7 +78,7 @@
         </div>
     </md-toolbar>
     <div layout="row"> 
-        <div layout="column" flex>
+        <div layout="column" class="permissoes-padding-left-15" flex>
             <h2>Clientes</h2>
                 <div flex-gt-sm="50" ng-repeat="permissao in vm.permissoes">
                     <md-checkbox ng-checked="vm.exists(permissao, vm.permissoesSelecionadasClientes)" ng-click="vm.toggle(permissao, vm.permissoesSelecionadasClientes)">
@@ -95,5 +95,4 @@
                 </div>
         </div>
     </div>
-
   </md-card>

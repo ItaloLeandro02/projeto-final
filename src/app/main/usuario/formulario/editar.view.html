@@ -5,7 +5,6 @@
             <span flex></span>
         </div>
     </md-toolbar>
-      
       <md-card class="default-padding m-20">
         <form name="vm.form">
             <md-content class="md-no-momentum">
@@ -19,6 +18,7 @@
                                     <div ng-message="md-maxlength">O nome deve conter no máximo 60 caracteres.</div>
                                 </div>
                 </md-input-container>
+                nome: {{vm.data.nome}}
                 <div layout="row">
                 <md-input-container class="md-icon-float md-block" flex>
                     <label>Senha</label>
@@ -54,3 +54,29 @@
                 </div>
         </form>
       </md-card>
+        <md-card>
+    <md-toolbar class="md-accent md-hue-2">
+        <div class="md-toolbar-tools">
+            <span flex="30">Permissões</span>
+            <span flex></span>
+        </div>
+    </md-toolbar>
+    <div layout="row"> 
+        <div layout="column" class="permissoes-padding-left-15" flex>
+            <h2>Clientes</h2>
+                <div flex-gt-sm="50" ng-repeat="permissao in vm.permissoes">
+                    <md-checkbox ng-checked="vm.exists(permissao, vm.permissoesSelecionadasClientes)" ng-click="vm.toggle(permissao, vm.permissoesSelecionadasClientes)">
+                    {{ permissao }} <span ng-if="vm.exists(permissao, vm.permissoesSelecionadasClientes)"></span>
+                    </md-checkbox>
+                </div>
+        </div>
+        <div layout="column" flex>
+            <h2>Usuários</h2>
+                <div flex-gt-sm="50" ng-repeat="permissao in vm.permissoes">
+                    <md-checkbox ng-checked="vm.exists(permissao, vm.permissoesSelecionadasUsuarios)" ng-click="vm.toggle(permissao, vm.permissoesSelecionadasUsuarios)">
+                    {{ permissao }} <span ng-if="vm.exists(permissao, vm.permissoesSelecionadasUsuarios)"></span>
+                    </md-checkbox>
+                </div>
+        </div>
+    </div>
+  </md-card>

@@ -20,6 +20,7 @@
         vm.permissoesSelecionadasUsuarios           = []
         vm.toggle                                   = toggle
         vm.exists                                   = exists
+        vm.data                                     = {}
 
 
         function salvar() {
@@ -55,7 +56,23 @@
 
         function exists(item, list) {
             return list.indexOf(item) > -1
-          }
+        }
+
+        vm.gridService = {
+            query : {
+                order: 'nome',
+                limit: 5,
+                page: 1
+            },
+            selected : [],
+
+            loadData : function(){
+                return usuarioService.getDataMockup().then(function(records){
+                    console.log(records)
+                    vm.data = records
+                })   
+            }
+        }
 
         function init(){
             console.log(usuarioId)
@@ -64,6 +81,7 @@
                     vm.data = records
                 })
             }*/
+            vm.gridService.loadData()
         }
         init()
         
