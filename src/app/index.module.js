@@ -30,6 +30,9 @@
             //Módulo usuário
             'app.usuario',
 
+            //Módulo log
+            //'app.log',
+
 
         ]);
 })();
