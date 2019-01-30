@@ -1,7 +1,7 @@
 <md-toolbar class="md-accent md-hue-2">
     <div class="md-toolbar-tools">
         <md-icon flex="5" md-font-icon="icon-person-box"></md-icon>
-        <span flex="30">Lista de usuarios</span>
+        <span flex="30">Lista de Log</span>
         <span flex></span>
         
     </div>
@@ -14,9 +14,8 @@
       <thead md-head md-order="vm.gridService.query.order" md-on-reorder="vm.gridService.loadData">
         <tr md-row>
           <th md-column md-order-by="nome"><span>Usuarios</span></th>          
-          <th md-column>Email</th>
-          <th md-column md-numeric>Administrador</th>
-          <th md-column md-numeric>Desativado</th>
+          <th md-column>Ação</th>
+          <th md-column md-numeric>Data e Hora</th>
           <th md-column>
 
           </th>          
@@ -26,14 +25,8 @@
         <tr md-row md-select="record" md-select-id="id" md-auto-select 
         ng-repeat="record in vm.data">
         <td md-cell>{{record.nome}}</td>
-          <td md-cell>{{record.email}}</td>
-          <td md-cell>{{record.administrador}}</td>
-          <td md-cell>{{record.desativado}}</td>
-          <td md-cell>
-            <md-button class="md-icon-button" aria-label="Favorite" ng-click="vm.editar(record.id)">
-                <md-icon md-font-icon="icon-pencil"></md-icon>
-              </md-button>
-          </td>          
+          <td md-cell>{{record.acao}}</td>
+          <td md-cell>{{record.data_hora}}</td> 
         </tr>
       </tbody>
     </table>

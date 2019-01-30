@@ -31,7 +31,10 @@
             'app.usuario',
 
             //Módulo log
-            //'app.log',
+            'app.log',
+
+            //Módulo acesso
+            'app.acesso',
 
 
         ]);
