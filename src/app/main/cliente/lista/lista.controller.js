@@ -7,13 +7,15 @@
         .controller('ListaClienteController', ListaClienteController);
 
     /** @ngInject */
-    function ListaClienteController(clienteService,$state)
+    function ListaClienteController(clienteService,$state,$mdSidenav)
     {
         var vm = this;
 
         vm.novoCliente = novoCliente;
         vm.editar = editar;
         vm.view = view;
+        //vm.toggleLeft = buildToggler('left');
+
 
         vm.gridService = {
             query : {
@@ -48,6 +50,12 @@
             $state.go('app.viewCliente', {id : clienteId})
         }
         
+        /*function buildToggler(componentId) {
+            console.log('to aqui')
+            return function() {
+              $mdSidenav(componentId).toggle();
+            };
+          }*/
     }
 })();
 

@@ -24,7 +24,6 @@
 
             loadData : function(){
                 return clienteService.getDataMockup().then(function(records){
-                    console.log(records)
                     vm.data = records
                 })   
             }

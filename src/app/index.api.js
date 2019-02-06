@@ -178,9 +178,9 @@
         var api = {};
 
         // Base Url
-        api.baseUrl = 'app/data/';
+        api.baseUrl = 'http://localhost:3005/';
 
-        // api.sample = $resource(api.baseUrl + 'sample/sample.json');
+        api.auth = $resource(api.baseUrl + 'login');
 
         return api;
     }

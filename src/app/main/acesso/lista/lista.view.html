@@ -24,7 +24,7 @@
           </th>          
         </tr>
       </thead>
-      <tbody md-body>
+      <tbody md-body  id="customers">
         <tr  md-row md-select="record" md-select-id="id" md-auto-select style="cursor: pointer"
         ng-repeat="record in vm.data" ng-click="vm.view(record.id)">
         <td md-cell>{{record.nome_fantasia}}</td>
@@ -32,7 +32,7 @@
           <td md-cell>{{record.numero_serie}}</td> 
           <td md-cell>{{record.versao_siaf}}</td>
           <td md-cell>{{record.ip}}</td>
-          <td md-cell>{{record.data_hora_acesso}}</td>
+          <td md-cell>{{record.data_hora_acesso | date: 'dd/MM/yyyy HH:mm'}}</td>
         </tr>
       </tbody>
     </table>

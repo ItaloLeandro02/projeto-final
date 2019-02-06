@@ -7,7 +7,7 @@
         .controller('LoginController', LoginController);
 
     /** @ngInject */
-    function LoginController($localStorage,$state)
+    function LoginController($localStorage,$state,loginService)
     {
         var vm = this;
         
@@ -19,7 +19,18 @@
         vm.login = login;
 
         function login(){
-            $state.go('app.cliente')
+            
+            let sucesso = function(resposta){
+                $localStorage.usuarioLogado = resposta.data
+                $state.go('app.cliente')
+            }
+
+            let erro = function(resposta){
+                window.alert('Usuario ou senha incorretos')
+            }
+            
+            loginService.auth(vm.form.email,vm.form.password).then(sucesso,erro)
+            
         }
     }
 })();
