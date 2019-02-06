@@ -5,7 +5,6 @@
         <span flex></span>
     </div>
 </md-toolbar>
-  
   <md-card class="default-padding m-20">
     <form name="vm.form">
         <md-content class="md-no-momentum">
@@ -19,6 +18,7 @@
                                 <div ng-message="md-maxlength">O nome deve conter no máximo 60 caracteres.</div>
                             </div>
             </md-input-container>
+              {{vm.data.nome}}
             <md-input-container class="md-icon-float md-block">
                 <label>Email</label>
                     <md-icon md-font-icon="icon-email" class="email"></md-icon>
@@ -26,6 +26,7 @@
                             <div ng-messages="vm.form.email.$error">
                                 <div ng-message="required">Email é obrigatório!</div>
                                 <div ng-message="md-maxlength">O email deve conter no máximo 60 caracteres.</div>
+                                <div ng-message="invalid">O email deve conter no máximo 60 caracteres.</div>
                             </div>
             </md-input-container>
             <div layout="row">
@@ -43,11 +44,11 @@
                 <md-button aria-label="Exibir senha" ng-click="vm.mudarStatus(vm.status)"> 
                     <md-icon md-font-icon="{{vm.status}}" flex></md-icon>
                 </md-button>
-                <md-button ng-click="vm.mudarSenha($event)">Alterar Senha?</md-button>
+                <md-button href="/mudar-senha">Alterar Senha?</md-button>
             </md-input-container>
             </div>
             <div layout="row" layout-align="end">
-                <md-button class="md-warn">Cancelar</md-button> 
+                <md-button class="md-warn" href="usuario">Cancelar</md-button> 
                 <md-button class="md-raised md-accent" type="submit" ng-click="vm.salvar()">Salvar</md-button>
             </div>
     </form>

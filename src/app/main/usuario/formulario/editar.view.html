@@ -5,7 +5,6 @@
             <span flex></span>
         </div>
     </md-toolbar>
-      
       <md-card class="default-padding m-20">
         <form name="vm.form">
             <md-content class="md-no-momentum">
@@ -24,7 +23,6 @@
                     <label>Senha</label>
                         <md-icon md-font-icon="icon-key-variant"></md-icon>
                             <input required ng-model="vm.data.senha" name="senha" ng-init="vm.data.senha = '123456'" minlength="5" md-maxlength="32" type="{{vm.tipo}}">
-                            <input required ng-model="vm.data.senha" name="senha" minlength="5" md-maxlength="32" type="password">
                                 <div ng-messages="vm.form.senha.$error">
                                     <div ng-message="required">A senha é obrigatória!</div>
                                     <div ng-message="minlength">A senha deve conter no mínimo 5 caracteres.</div>
@@ -55,3 +53,29 @@
                 </div>
         </form>
       </md-card>
+        <md-card>
+    <md-toolbar class="md-accent md-hue-2">
+        <div class="md-toolbar-tools">
+            <span flex="30">Permissões</span>
+            <span flex></span>
+        </div>
+    </md-toolbar>
+    <div layout="row"> 
+        <div layout="column" class="permissoes-padding-left-15" flex>
+            <h2>Clientes</h2>
+                <div flex-gt-sm="50" ng-repeat="permissao in vm.permissoes">
+                    <md-checkbox ng-checked="vm.exists(permissao, vm.permissoesSelecionadasClientes)" ng-click="vm.toggle(permissao, vm.permissoesSelecionadasClientes)">
+                    {{ permissao }} <span ng-if="vm.exists(permissao, vm.permissoesSelecionadasClientes)"></span>
+                    </md-checkbox>
+                </div>
+        </div>
+        <div layout="column" flex>
+            <h2>Usuários</h2>
+                <div flex-gt-sm="50" ng-repeat="permissao in vm.permissoes">
+                    <md-checkbox ng-checked="vm.exists(permissao, vm.permissoesSelecionadasUsuarios)" ng-click="vm.toggle(permissao, vm.permissoesSelecionadasUsuarios)">
+                    {{ permissao }} <span ng-if="vm.exists(permissao, vm.permissoesSelecionadasUsuarios)"></span>
+                    </md-checkbox>
+                </div>
+        </div>
+    </div>
+  </md-card>
