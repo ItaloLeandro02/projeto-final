@@ -14,23 +14,6 @@
         // Data
         vm.helloText = SampleData.data.helloText;
 
-        vm.teste = [
-            {
-                nome: "Ricardo de Oliveira",
-                idade: 20,
-                cidade: "Nanuque"
-            },
-            {
-                nome: "Italo Leandro",
-                idade: 21,
-                cidade: "Itanhem"
-            },
-            {
-                nome: "Danilo Duarte",
-                idade: 29,
-                cidade: "Itamaraju"
-            }
-        ]
         // Methods
 
         //////////

@@ -7,33 +7,16 @@
         .factory('usuarioService', usuarioService);
 
     /** @ngInject */
-    function usuarioService($q)
-    {
-        var service = {
-            getDataMockup: getDataMockup
-        };
-
-        return service;
+    function usuarioService (api) {
         
-        function getDataMockup()
-        {
-            var data = [
-                {
-                  id                                : 1,
-                  email                             : 'daniloduarte@hotmail.com',
-                  nome                              : 'Danilo Duarte',
-                  administrador                     : 'true',
-                  desativado                        : 'false',
-                  permissoesSelecionadasClientes    : ['Incluir'],
-                  permissoesSelecionadasUsuarios    : ['Incluir']
-               
-               },
-            ]
+        let usuarioFactory = {};    
 
-            // Return the promise
-            return Promise.resolve(data);
+        usuarioFactory.getAll = function () {
+            let ds = new api.usuario();
+            return ds.$get();
         }
-        
+
+        return usuarioFactory;
     }
 
 })();

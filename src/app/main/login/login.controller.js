@@ -12,7 +12,7 @@
         var vm = this;
         
         function init(){
-
+            $localStorage.usuarioLogado = ''
         }
         init();
 

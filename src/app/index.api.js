@@ -181,7 +181,11 @@
         api.baseUrl = 'http://localhost:3005/';
 
         api.auth = $resource(api.baseUrl + 'login');
-
+        api.cliente = $resource(api.baseUrl + 'api/cliente')
+        api.usuario = $resource(api.baseUrl + 'api/usuario')
+        api.log = $resource(api.baseUrl + 'api/log')
+        api.acesso = $resource(api.baseUrl + 'api/acesso')
+        
         return api;
     }
 

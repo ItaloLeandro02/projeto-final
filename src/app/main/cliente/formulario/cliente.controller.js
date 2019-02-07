@@ -14,23 +14,8 @@
         vm.novoCliente = novoCliente;
         vm.salvar = salvar;
 
-        vm.gridService = {
-            query : {
-                order: 'nome',
-                limit: 5,
-                page: 1
-            },
-            selected : [],
-
-            loadData : function(){
-                return clienteService.getDataMockup().then(function(records){
-                    vm.data = records
-                })   
-            }
-        }
 
         function init(){
-            vm.gridService.loadData()
             /*if (clienteId) {
                 clienteService.getById(clienteId).then(function(resposta){
                     vm.ds = resposta.data
