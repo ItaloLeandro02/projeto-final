@@ -16,6 +16,12 @@
             return ds.$get();
         }
 
+        usuarioFactory.getById = function (usuarioId) {
+            let ds = new api.usuario();
+            ds.id  = usuarioId
+            return ds.$get();
+        }
+
         return usuarioFactory;
     }
 

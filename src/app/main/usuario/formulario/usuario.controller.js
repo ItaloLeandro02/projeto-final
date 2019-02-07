@@ -7,21 +7,20 @@
         .controller('UsuarioController', UsuarioController);
 
     /** @ngInject */
-    function UsuarioController(usuarioService,usuarioId)
+    function UsuarioController(usuarioService,usuarioId,siafUtils)
     {
         var vm                                      = this;
+
+        var rotinas = siafUtils.getRotinas(); 
+        vm.rotinasUsuario = rotinas.filter(function(item){ return item.valor.substr(2,item.valor.length) == 'USU' });
+        vm.rotinasCliente = rotinas.filter(function(item){ return item.valor.substr(2,item.valor.length) == 'CLI' });
+        
         vm.salvar                                   = salvar
         vm.mudarStatus                              = mudarStatus
         vm.tipo                                     = 'password'
         vm.status                                   = 'icon-lock-unlocked-outline'
-        vm.mudarSenha                               = mudarSenha 
-        vm.permissoes                               = ['Incluir', 'Editar', 'Excluir', 'Visualizar']
-        var permissoesUsuario                       = ['01USU', '02USU', '03USU', '04USU']
-        var permissoesCliente                       = ['01CLI', '02CLI', '03CLI', '04CLI']
-        vm.permissoesSelecionadasClientes           = []
-        vm.permissoesSelecionadasUsuarios           = []
-        vm.toggle                                   = toggle
-        vm.exists                                   = exists
+        vm.mudarSenha                               = mudarSenha
+        
         vm.data                                     = {
             desativado      : false,
             administrador   : false,
@@ -30,14 +29,12 @@
 
         function salvar() {
             if (!vm.data.administrador) {
-                vm.permissoesSelecionadasUsuarios.forEach(permissao => {
-                    vm.data.permissoes.push(extraiPermissaoUsuarios(permissao))
-                });
-                vm.permissoesSelecionadasClientes.forEach(permissao => {
-                    vm.data.permissoes.push(extraiPermissaoClientes(permissao))
-                });
+                vm.data.permissoes = [];
+                vm.data.permissoes = vm.data.permissoes.concat(vm.rotinasUsuario.filter(function(rotina) { return rotina.checked }));
+                vm.data.permissoes = vm.data.permissoes.concat(vm.rotinasCliente.filter(function(rotina) { return rotina.checked }));
+                vm.data.permissoes = vm.data.permissoes.map(function(rotina){ return rotina.valor });
             }
-                          
+
             console.log(vm.data.nome, vm.data.administrador, vm.data.desativado, vm.data.permissoes)
         }
 
@@ -58,72 +55,31 @@
             //A API deve verificar a senha digitada como o banco e vereifca a nova senha juntamente com sua confirmação
         }
 
-        function toggle(item, list) {
-            var idx = list.indexOf(item)
-            if (idx > -1) {
-              list.splice(idx, 1)
-            }
-            else {
-              list.push(item)
-            }
-        }
-
-        function exists(item, list) {
-            return list.indexOf(item) > -1
-        }
-
-        vm.permissoesSelecionadasClientes.includes();
-
-        function extraiDataUsuario() {
-            let permissoes = []
-
-            permissoesUsuario.forEach(function(item, index) {
-                vm.data.permissoes.includes(item) ? permissoes.push(vm.permissoes[index]) : null
+        function preparaVisualizacao() {
+            vm.data.permissoes.forEach(function(permissao){
+                if (permissao.rotina.substr(2,permissao.rotina.length) == 'USU') {
+                    var rotina = vm.rotinasUsuario.find(function(rotinaUsuario){ return permissao.rotina == rotinaUsuario.valor });
+                    rotina ? rotina.checked = true : null
+                } else {
+                    var rotina = vm.rotinasCliente.find(function(rotinaCliente){ return permissao.rotina == rotinaCliente.valor });
+                    rotina ? rotina.checked = true : null
+                }
             })
-
-            return permissoes
-        }
-
-        function extraiDataCliente() {
-            let permissoes = []
-
-            permissoesCliente.forEach(function(item, index) {
-                vm.data.permissoes.includes(item) ? permissoes.push(vm.permissoes[index]) : null
-            })
-
-            return permissoes
-        }
-
-        function extraiPermissaoUsuarios(permissao) {
-            permissao = permissao =="Incluir" ? "01USU": permissao
-            permissao = permissao =="Editar" ? "02USU": permissao
-            permissao = permissao == "Excluir" ? "03USU": permissao
-            permissao = permissao == "Visualizar" ? "04USU": permissao
-
-            return permissao
         }
 
         function init(){
-            console.log(usuarioId)
-            /*if(usuarioId) {
-                return usuarioService.getById(usuarioId).then(function(dados) {
-                    vm.data = records
-                })
-            }*/
             if (usuarioId) {
-                vm.data = {
-                    desativado      : true,
-                    administrador   : true,
-                    permissoes      : ['01USU', '02USU', '04CLI', '02CLI', '04USU']
-                }
+                return usuarioService.getById(usuarioId).then(function(records){
+                    vm.data = records.data;
 
-                vm.permissoesSelecionadasUsuarios = extraiDataUsuario()
-                vm.permissoesSelecionadasClientes = extraiDataCliente()
+                    preparaVisualizacao();
+                }).catch((error)=>{
+                    toastr.error(error.data.message,'ATENÇÃO')
+                    $state.go('app.sample')
+                })
             }
-
         }
         init()
-        
     }
 })();
 

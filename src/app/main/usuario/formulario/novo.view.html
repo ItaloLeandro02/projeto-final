@@ -80,17 +80,17 @@
     <div layout="row"> 
         <div layout="column" class="permissoes-padding-left-15" flex>
             <h2>Clientes</h2>
-                <div flex-gt-sm="50" ng-repeat="permissao in vm.permissoes">
-                    <md-checkbox ng-checked="vm.exists(permissao, vm.permissoesSelecionadasClientes)" ng-click="vm.toggle(permissao, vm.permissoesSelecionadasClientes)" ng-disabled="vm.data.administrador">
-                    {{ permissao }} 
+                <div flex-gt-sm="50" ng-repeat="permissao in vm.rotinasCliente">
+                    <md-checkbox ng-model="permissao.checked" ng-disabled="vm.data.administrador">
+                    {{ permissao.nome }} 
                     </md-checkbox>
                 </div>
         </div>
         <div layout="column" flex>
             <h2>Usuários</h2>
-                <div flex-gt-sm="50" ng-repeat="permissao in vm.permissoes">
-                    <md-checkbox ng-checked="vm.exists(permissao, vm.permissoesSelecionadasUsuarios)" ng-click="vm.toggle(permissao, vm.permissoesSelecionadasUsuarios)" ng-disabled="vm.data.administrador">
-                    {{ permissao }}
+                <div flex-gt-sm="50" ng-repeat="permissao in vm.rotinasUsuario">
+                    <md-checkbox ng-model="permissao.checked" ng-disabled="vm.data.administrador">
+                    {{ permissao.nome }}
                     </md-checkbox>
                 </div>
         </div>

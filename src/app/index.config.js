@@ -34,7 +34,13 @@
                     var stateService = $injector.get('$state');
                     stateService.go('app.login');
                     toastr.error("Faça login novamente.","Token Expirado!",{progressBar:true,timeOut:3000})
-                    break;                
+                    break;
+                    
+                  case 403:
+                    var stateService = $injector.get('$state');
+                    stateService.go('app.sample');
+                    toastr.error(response.data.message,"Acesso não autorizado",{progressBar:true,timeOut:3000})
+                    break;  
     
                   default :
                     return $q.reject(response);

@@ -181,10 +181,11 @@
         api.baseUrl = 'http://localhost:3005/';
 
         api.auth = $resource(api.baseUrl + 'login');
-        api.cliente = $resource(api.baseUrl + 'api/cliente')
-        api.usuario = $resource(api.baseUrl + 'api/usuario')
-        api.log = $resource(api.baseUrl + 'api/log')
-        api.acesso = $resource(api.baseUrl + 'api/acesso')
+        api.cliente = $resource(api.baseUrl + 'api/cliente/:id', {id : '@id'})
+        api.usuario = $resource(api.baseUrl + 'api/usuario/:id', {id : '@id'})
+        api.log = $resource(api.baseUrl + 'api/log/:id', {id : '@id'})
+        api.acesso = $resource(api.baseUrl + 'api/acesso/:id', {id : '@id'})
+        api.autorizacao = $resource(api.baseUrl + 'api/autorizacao/:rotina', {rotina : '@rotina'}) 
         
         return api;
     }

@@ -29,9 +29,13 @@
                     }
                 },
                 resolve : {
-                    usuarioId : function($stateParams){
-                        console.log('Modulo: ' + $stateParams.id)
-                        return $stateParams.id;
+                    usuarioId : function($stateParams, api){
+                        
+                        var auth = new api.autorizacao();
+                        auth.rotina = '01USU';
+                        auth.$get(function(){
+                            return $stateParams.id;
+                        })
                     }    
                 }
             })
