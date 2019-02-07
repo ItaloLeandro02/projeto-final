@@ -37,12 +37,12 @@
                 </div>
                 <div layout="column">
                 <md-input-container class="md-icon-float md-block">
-                    <md-switch ng-model="vm.data.administrador" ng-init="vm.data.administrador = false" aria-label="Administrador?" class="md-acept">
+                    <md-switch ng-model="vm.data.administrador" aria-label="Administrador?" class="md-acept">
                         Administrador
                     </md-switch>
                 </md-input-container>
                 <md-input-container class="md-icon-float md-block">
-                    <md-switch ng-model="vm.data.desativado" ng-init="vm.data.desativado = false" aria-label="Desativado?" class="md-warn">
+                    <md-switch ng-model="vm.data.desativado" aria-label="Desativado?" class="md-warn">
                         Desativado
                     </md-switch>
                 </md-input-container>
@@ -65,7 +65,7 @@
             <h2>Clientes</h2>
                 <div flex-gt-sm="50" ng-repeat="permissao in vm.permissoes">
                     <md-checkbox ng-checked="vm.exists(permissao, vm.permissoesSelecionadasClientes)" ng-click="vm.toggle(permissao, vm.permissoesSelecionadasClientes)">
-                    {{ permissao }} <span ng-if="vm.exists(permissao, vm.permissoesSelecionadasClientes)"></span>
+                    {{ permissao }}
                     </md-checkbox>
                 </div>
         </div>
@@ -73,7 +73,7 @@
             <h2>Usuários</h2>
                 <div flex-gt-sm="50" ng-repeat="permissao in vm.permissoes">
                     <md-checkbox ng-checked="vm.exists(permissao, vm.permissoesSelecionadasUsuarios)" ng-click="vm.toggle(permissao, vm.permissoesSelecionadasUsuarios)">
-                    {{ permissao }} <span ng-if="vm.exists(permissao, vm.permissoesSelecionadasUsuarios)"></span>
+                    {{ permissao }}
                     </md-checkbox>
                 </div>
         </div>
