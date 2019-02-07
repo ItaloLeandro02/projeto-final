@@ -16,7 +16,8 @@
         vm.status                                   = 'icon-lock-unlocked-outline'
         vm.mudarSenha                               = mudarSenha 
         vm.permissoes                               = ['Incluir', 'Editar', 'Excluir', 'Visualizar']
-        permissoesUsuario                           = ['01USU', '02USU', '03USU', '04USU']
+        var permissoesUsuario                       = ['01USU', '02USU', '03USU', '04USU']
+        var permissoesCliente                       = ['01CLI', '02CLI', '03CLI', '04CLI']
         vm.permissoesSelecionadasClientes           = []
         vm.permissoesSelecionadasUsuarios           = []
         vm.toggle                                   = toggle
@@ -70,16 +71,29 @@
         function exists(item, list) {
             return list.indexOf(item) > -1
         }
-/*
-        function extraiData(permissao, arrayPermisoes) {
-            permissao = permissao =="Incluir" ? "01USU": permissao
-            permissao = permissao =="Editar" ? "02USU": permissao
-            permissao = permissao == "Excluir" ? "03USU": permissao
-            permissao = permissao == "Visualizar" ? "04USU": permissao
 
-            return permissao
+        vm.permissoesSelecionadasClientes.includes();
+
+        function extraiDataUsuario() {
+            let permissoes = []
+
+            permissoesUsuario.forEach(function(item, index) {
+                vm.data.permissoes.includes(item) ? permissoes.push(vm.permissoes[index]) : null
+            })
+
+            return permissoes
         }
-*/
+
+        function extraiDataCliente() {
+            let permissoes = []
+
+            permissoesCliente.forEach(function(item, index) {
+                vm.data.permissoes.includes(item) ? permissoes.push(vm.permissoes[index]) : null
+            })
+
+            return permissoes
+        }
+
         function extraiPermissaoUsuarios(permissao) {
             permissao = permissao =="Incluir" ? "01USU": permissao
             permissao = permissao =="Editar" ? "02USU": permissao
@@ -88,34 +102,6 @@
 
             return permissao
         }
-
-        function extraiPermissaoClientes(permissao) {
-            permissao = permissao =="Incluir" ? "01CLI": permissao
-            permissao = permissao =="Editar" ? "02CLI": permissao
-            permissao = permissao == "Excluir" ? "03CLI": permissao
-            permissao = permissao == "Visualizar" ? "04CLI": permissao
-
-            return permissao
-        }
-
-        function retornarPermissaoCliente(permissao) {
-            permissao = permissao == "01CLI" ? "Incluir": permissao
-            permissao = permissao == "02CLI" ? "Editar": permissao
-            permissao = permissao == "03CLI" ? "Excluir": permissao
-            permissao = permissao == "04CLI" ? "Visualizar": permissao
-
-            return permissao
-        }
-        
-        function retornarPermissaoUsuario(permissao) {
-            permissao = permissao == "01USU" ? "Incluir": permissao
-            permissao = permissao == "02USU" ? "Editar": permissao
-            permissao = permissao == "03USU" ? "Excluir": permissao
-            permissao = permissao == "04USU" ? "Visualizar": permissao
-
-            return permissao
-        }
-        
 
         function init(){
             console.log(usuarioId)
@@ -128,14 +114,13 @@
                 vm.data = {
                     desativado      : true,
                     administrador   : true,
-                    permissoes      : ['01USU', '02USU', '04CLI', '02CLI']
+                    permissoes      : ['01USU', '02USU', '04CLI', '02CLI', '04USU']
                 }
 
-                vm.data.permissoes.forEach(permissao => {
-                    vm.permissoesSelecionadasClientes.push(retornarPermissaoCliente(permissao))
-                    vm.permissoesSelecionadasUsuarios.push(retornarPermissaoUsuario(permissao))
-                })
+                vm.permissoesSelecionadasUsuarios = extraiDataUsuario()
+                vm.permissoesSelecionadasClientes = extraiDataCliente()
             }
+
         }
         init()
         
