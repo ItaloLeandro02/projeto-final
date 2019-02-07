@@ -26,10 +26,15 @@
             selected : [],
 
             loadData : function(){
-                return clienteService.getDataMockup().then(function(records){
-                    console.log(records)
-                    vm.data = records
-                })   
+                  
+                return clienteService.getAll().then(function(records){
+                    vm.data = records.data.rows
+                }).catch((error)=>{
+                    toastr.error(error.data.message,"ATENÇÃO")
+                    $state.go('app.sample')
+                })
+                
+                
             }
         }
 

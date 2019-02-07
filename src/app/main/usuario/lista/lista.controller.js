@@ -25,9 +25,12 @@
             selected : [],
 
             loadData : function(){
-                return usuarioService.getDataMockup().then(function(records){
-                    vm.data = records
-                })   
+                return usuarioService.getAll().then(function(records){
+                    vm.data = records.data
+                }).catch((error)=>{
+                    toastr.error(error.data.message,'ATENÇÃO')
+                    $state.go('app.sample')
+                })
             }
         }
 

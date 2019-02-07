@@ -30,8 +30,8 @@
         ng-repeat="record in vm.data">
         <td md-cell>{{record.nome}}</td>
           <td md-cell>{{record.email}}</td>
-          <td md-cell>{{record.administrador}}</td>
-          <td md-cell>{{record.desativado}}</td>
+          <td md-cell>{{record.administrador ? 'Sim' : 'Não'}}</td>
+          <td md-cell>{{record.desativado ? 'Sim' : 'Não'}}</td>
           <td md-cell>
             <md-button class="md-icon-button" aria-label="Favorite" ng-click="vm.editar(record.id)">
                 <md-icon md-font-icon="icon-pencil"></md-icon>
