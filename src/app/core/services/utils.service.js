@@ -22,10 +22,20 @@
             {nome : 'Visualizar', valor: '01LOG'}           
         ]
 
+        var acoes = {
+            '01USU' : ' Inclusão de usuário',
+            '02USU' : ' Edição de usuário',
+            '03USU' : ' Exclusão de usuário',
+            '01CLI' : ' Inclusão de cliente',
+            '02CLI' : ' Edição de cliente',
+            '03CLI' : ' Exclusão de cliente',
+        }
+
         var service = {
             getRotinas          : getRotinas,
             getRotinaPorNome    : getRotinaPorNome,
-            getRotinaPorValor   : getRotinaPorValor
+            getRotinaPorValor   : getRotinaPorValor,
+            getAcoes            : getAcoes
         };
 
         return service;
@@ -38,6 +48,11 @@
         function getRotinas()
         {
             return rotinas;
+        }
+
+        function getAcoes()
+        {
+            return acoes;
         }
 
         function getRotinaPorNome(nomeRotina)

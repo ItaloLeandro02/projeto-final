@@ -26,8 +26,9 @@
             selected : [],
 
             loadData : function(){
-                return acessoService.getDataMockup().then(function(records){
-                    vm.data = records
+                return acessoService.getAll().then(function(records){
+                    console.log(records.data)
+                    vm.data = records.data
                 })   
             }
         }

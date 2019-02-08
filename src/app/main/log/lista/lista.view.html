@@ -16,19 +16,17 @@
           <th md-column md-order-by="nome"><span>Usuario</span></th>          
           <th md-column>Data e Hora</th>
           <th md-column md-numeric>Rotina</th>
-          <th md-column>Ação</th>
           <th md-column>
 
           </th>          
         </tr>
       </thead>
-      <tbody md-body>
+      <tbody md-body id="customers">
         <tr md-row md-select="record" md-select-id="id" md-auto-select 
-        ng-repeat="record in vm.data">
+        ng-repeat="record in vm.data" style="cursor:pointer" ng-click="vm.openModal($event)">
         <td md-cell>{{record.usuario.nome}}</td>
           <td md-cell>{{record.dataHora | date: 'dd/MM/yyyy HH:mm'}}</td>
           <td md-cell>{{record.rotina}}</td>
-          <td md-cell>{{record.acao}}</td> 
         </tr>
       </tbody>
     </table>
