@@ -22,6 +22,14 @@
             return ds.$get();
         }
 
+        usuarioFactory.save = function (usuarioModel) {
+            let ds = new api.usuario();
+
+            Object.keys(usuarioModel).forEach(function(key, value) {
+                ds[key] = value
+            })
+        }
+
         return usuarioFactory;
     }
 
