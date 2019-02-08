@@ -7,7 +7,7 @@
         .controller('UsuarioController', UsuarioController);
 
     /** @ngInject */
-    function UsuarioController(usuarioService,usuarioId,siafUtils)
+    function UsuarioController(usuarioService,usuarioId,siafUtils, $state)
     {
         var vm                                      = this;
 
@@ -32,15 +32,25 @@
         function salvar() {
             if (!vm.data.administrador) {
                 vm.data.permissoes = [];
-                vm.data.permissoes = vm.data.permissoes.concat(vm.rotinasUsuario.filter(function(rotina) { return rotina.checked }));
-                vm.data.permissoes = vm.data.permissoes.concat(vm.rotinasCliente.filter(function(rotina) { return rotina.checked }));
-                vm.data.permissoes = vm.data.permissoes.concat(vm.rotinasLog.filter(function(rotina) { return rotina.checked }));
-                vm.data.permissoes = vm.data.permissoes.concat(vm.rotinasAcesso.filter(function(rotina) { return rotina.checked }));
-                vm.data.permissoes = vm.data.permissoes.map(function(rotina){ return rotina.valor });
+                var object = {}
+                vm.data.permissoes = vm.data.permissoes.concat(vm.rotinasUsuario.filter(function(rotina) { return  rotina.checked }));
+                vm.data.permissoes = vm.data.permissoes.concat(vm.rotinasCliente.filter(function(rotina) { return  rotina.checked }));
+                vm.data.permissoes = vm.data.permissoes.concat(vm.rotinasLog.filter(function(rotina) { return  rotina.checked }));
+                vm.data.permissoes = vm.data.permissoes.concat(vm.rotinasAcesso.filter(function(rotina) { return  rotina.checked }));
+                vm.data.permissoes = vm.data.permissoes.map(function(rotina){ object.rotina = rotina.valor; return object });
             }
 
             usuarioService.save(vm.data).then(function(resposta) {
-                
+                if (usuarioId) {
+                    toastr.info(resposta.message)
+                } else {
+                    toastr.success(resposta.message)
+                }
+                $state.go('app.usuario')
+            }).catch(function(error) {
+                error.data.errors.forEach(erro => {
+                    toastr.error(erro)
+                })
             })
         }
 
