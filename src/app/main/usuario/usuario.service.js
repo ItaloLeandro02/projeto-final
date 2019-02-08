@@ -25,9 +25,12 @@
         usuarioFactory.save = function (usuarioModel) {
             let ds = new api.usuario();
 
-            Object.keys(usuarioModel).forEach(function(key, value) {
-                ds[key] = value
+            Object.keys(usuarioModel).forEach(function(key) {
+                ds[key] = usuarioModel[key];
             })
+
+            if (ds.id) {return ds.$update()}
+            return ds.$save();
         }
 
         return usuarioFactory;
