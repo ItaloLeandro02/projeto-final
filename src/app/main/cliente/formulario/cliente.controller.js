@@ -14,7 +14,6 @@
         vm.novoCliente = novoCliente;
         vm.salvar = salvar;
 
-
         function init(){
             /*if (clienteId) {
                 clienteService.getById(clienteId).then(function(resposta){
@@ -29,14 +28,29 @@
         }
 
         function salvar(){
+            
             var newCliente = {
-                nome : vm.nome,
+                numeroSerie : vm.numeroSerie,
                 cpf  : vm.cpf,
                 cnpj : vm.cnpj,
-                contrato: vm.contrato
+                contrato: vm.contrato,
+                status : vm.status,
+                androidGourmet: vm.gourmet,
+                numDispositivo: vm.numDispositivos,
+                androidPedidos: vm.pedidos,
+                numDispositivosPedidos: vm.numDispositivosPedidos
+            }
+            
+            let sucesso = function(resposta){
+                toastr.success('Cliente adicionado com exito','TUDO CERTO :)')
+                $state.go('app.cliente')
             }
 
-           
+            let erro = function(resposta) {
+                console.log(resposta)
+            }
+
+            clienteService.save(newCliente).then(sucesso,erro)
         }
         
     }

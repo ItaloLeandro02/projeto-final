@@ -14,8 +14,6 @@
         vm.novoCliente = novoCliente;
         vm.editar = editar;
         vm.view = view;
-        //vm.toggleLeft = buildToggler('left');
-
 
         vm.gridService = {
             query : {
@@ -33,8 +31,6 @@
                     toastr.error(error.data.message,"ATENÇÃO")
                     $state.go('app.sample')
                 })
-                
-                
             }
         }
 

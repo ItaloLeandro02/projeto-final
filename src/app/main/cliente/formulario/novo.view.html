@@ -8,24 +8,17 @@
 </md-toolbar>
   
   <md-card class="default-padding m-20">
-    <form name="novoClienteForm">
-        <md-input-container class="md-icon-float md-block">
-            <!-- Use floating label instead of placeholder -->
-            <label>Nome</label>
-            <md-icon md-font-icon="icon-account" class="name"></md-icon>
-            <input ng-model="vm.nome" type="text">
-          </md-input-container>
-          
+    <form name="vm.novoClienteForm">
         <div layout="row">
-          <md-input-container class="md-block" flex>
+          <md-input-container class="md-block" flex >
             <md-icon md-font-icon="icon-document"></md-icon>
-            <input ng-model="vm.cpf" type="text" placeholder="CPF" ng-required="true" ui-br-cpf-mask>
+            <input ng-model="vm.cpf" name="cpf" type="text" placeholder="CPF" ui-br-cpf-mask >
           </md-input-container>
       
-          <md-input-container class="md-block" flex>
+          <md-input-container class="md-block" flexks>
             <!-- Use floating placeholder instead of label -->
             <md-icon md-font-icon="icon-document" class="email"></md-icon>
-            <input ng-model="vm.cnpj" type="text" placeholder="CNPJ" ng-required="true" ui-br-cnpj-mask>
+            <input ng-model="vm.cnpj" name="cnpj" type="text" placeholder="CNPJ" ui-br-cnpj-mask>
           </md-input-container>
         </div>
         <div layout="row">
