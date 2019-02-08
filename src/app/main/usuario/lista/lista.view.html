@@ -14,7 +14,6 @@
     <!-- exact table from live demo -->
   <md-table-container>
     <table md-table md-row-select="false" multiple ng-model="vm.gridService.selected" md-progress="promise">
-      <md-table-pagination md-limit="vm.gridService.limit" md-page="vm.gridService.page" ></md-table-pagination>
       <thead md-head md-order="vm.gridService.query.order" md-on-reorder="vm.gridService.loadData">
         <tr md-row>
           <th md-column md-order-by="nome"><span>Usuarios</span></th>          
@@ -46,6 +45,7 @@
       </tbody>
     </table>
   </md-table-container>
+  <md-table-pagination md-limit="vm.gridService.query.limit" md-page="vm.gridService.query.page" md-page-select="vm.options.pageSelector" md-boundary-links="vm.options.boundaryLinks" md-on-paginate="vm.logPagination"></md-table-pagination>
   
   <md-table-pagination md-limit="query.limit" md-limit-options="[5, 10, 15]" 
             md-page="vm.gridService.page" md-total="{{vm.data.length}}" 

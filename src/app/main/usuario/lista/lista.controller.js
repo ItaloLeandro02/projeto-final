@@ -21,8 +21,8 @@
         vm.gridService = {
             query : {
                 order: 'nome',
-                limit: 5,
-                page: 1
+                "limit": 5,
+                "page": 1
             },
             selected : [],
                         
@@ -33,6 +33,19 @@
                     $state.go('app.usuario')
                 })
             }
+        }
+
+        vm.options = {
+            //autoSelect: true,
+            boundaryLinks: true,
+            //largeEditDialog: true,
+            //pageSelector: true,
+            rowSelection: true
+        };
+
+        vm.logPagination = function (page, limit) {
+            console.log('page: ', page);
+            console.log('limit: ', limit);
         }
         
         function view(usuarioId){
