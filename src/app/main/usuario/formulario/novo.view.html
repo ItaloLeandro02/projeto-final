@@ -41,12 +41,10 @@
             <md-input-container class="md-icon-float md-block" flex>
                 <label>Confirme a Senha</label>
                     <md-icon md-font-icon="icon-key-variant"></md-icon>
-                        <input required ng-model="confirmaSenha" ng-pattern="vm.data.senha" name="confirmaSenha" minlength="6" md-maxlength="32" type="password">
+                        <input required ng-model="confirmaSenha" ng-pattern="vm.data.senha" name="confirmaSenha" minlength="6" type="password">
                             <div ng-messages="vm.form.confirmaSenha.$error">
                                 <div ng-message="required">Confirme a senha!</div>
                                 <div ng-message="minlength">A senha deve conter no mínimo 6 caracteres.</div>
-                                <div ng-message="md-maxlength">A senha deve conter no máximo 32 caracteres.</div>
-                                <div ng-message="md-maxlength">A senha deve conter no máximo 32 caracteres.</div>
                                 <div ng-message="pattern">As senhas não conferem!.</div>
                             </div>
             </md-input-container>

@@ -98,23 +98,13 @@
     
 
         msNavigationServiceProvider.saveItem('acesso.usuario', {
-            title    : 'Usuário',
+            title    : 'Usuários',
             icon     : 'icon-account',
             state    : 'app.usuario',
             /*stateParams: {
                 'param1': 'page'
              },*/            
             weight   : 1
-        });
-
-        msNavigationServiceProvider.saveItem('acesso.editar', {
-            title    : 'Alterar Informações',
-            icon     : 'icon-cog',
-            state    : 'app.editarInformacoes',
-            /*stateParams: {
-                'param1': 'page'
-             },*/            
-            weight   : 1
-        });
+        })
     }
 })();

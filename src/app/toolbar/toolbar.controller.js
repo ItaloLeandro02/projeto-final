@@ -10,6 +10,7 @@
     function ToolbarController($rootScope, $q, $state, $timeout, $mdSidenav, $translate, $mdToast, msNavigationService)
     {
         var vm = this;
+        vm.nome = "Italo"
 
         // Data
         $rootScope.global = {
