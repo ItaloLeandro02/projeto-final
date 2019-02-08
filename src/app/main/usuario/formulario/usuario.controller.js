@@ -11,9 +11,11 @@
     {
         var vm                                      = this;
 
-        var rotinas = siafUtils.getRotinas(); 
-        vm.rotinasUsuario = rotinas.filter(function(item){ return item.valor.substr(2,item.valor.length) == 'USU' });
-        vm.rotinasCliente = rotinas.filter(function(item){ return item.valor.substr(2,item.valor.length) == 'CLI' });
+        var rotinas         = siafUtils.getRotinas(); 
+        vm.rotinasUsuario   = rotinas.filter(function(item){ return item.valor.substr(2,item.valor.length) == 'USU' });
+        vm.rotinasCliente   = rotinas.filter(function(item){ return item.valor.substr(2,item.valor.length) == 'CLI' });
+        vm.rotinasLog       = rotinas.filter(function(item){ return item.valor.substr(2,item.valor.length) == 'LOG' });
+        vm.rotinasAcesso    = rotinas.filter(function(item){ return item.valor.substr(2,item.valor.length) == 'ACE' });
         
         vm.salvar                                   = salvar
         vm.mudarStatus                              = mudarStatus
@@ -32,10 +34,14 @@
                 vm.data.permissoes = [];
                 vm.data.permissoes = vm.data.permissoes.concat(vm.rotinasUsuario.filter(function(rotina) { return rotina.checked }));
                 vm.data.permissoes = vm.data.permissoes.concat(vm.rotinasCliente.filter(function(rotina) { return rotina.checked }));
+                vm.data.permissoes = vm.data.permissoes.concat(vm.rotinasLog.filter(function(rotina) { return rotina.checked }));
+                vm.data.permissoes = vm.data.permissoes.concat(vm.rotinasAcesso.filter(function(rotina) { return rotina.checked }));
                 vm.data.permissoes = vm.data.permissoes.map(function(rotina){ return rotina.valor });
             }
 
-            console.log(vm.data.nome, vm.data.administrador, vm.data.desativado, vm.data.permissoes)
+            usuarioService.save(vm.data).then(function(resposta) {
+                
+            })
         }
 
         function mudarStatus(status) {

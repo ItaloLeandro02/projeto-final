@@ -17,7 +17,9 @@
             {nome : 'Incluir', valor: '01CLI'},
             {nome : 'Editar', valor: '02CLI'},
             {nome : 'Excluir', valor: '03CLI'},
-            {nome : 'Visualizar', valor: '04CLI'}            
+            {nome : 'Visualizar', valor: '04CLI'},
+            {nome : 'Visualizar', valor: '01ACE'},
+            {nome : 'Visualizar', valor: '01LOG'}           
         ]
 
         var service = {
