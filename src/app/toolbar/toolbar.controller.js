@@ -7,10 +7,10 @@
         .controller('ToolbarController', ToolbarController);
 
     /** @ngInject */
-    function ToolbarController($rootScope, $q, $state, $timeout, $mdSidenav, $translate, $mdToast, msNavigationService)
+    function ToolbarController($rootScope, $q, $state, $timeout, $mdSidenav, $translate, $mdToast, msNavigationService,$localStorage)
     {
         var vm = this;
-        vm.nome = "Italo"
+        vm.nome = $localStorage.nomeUsuario
 
         // Data
         $rootScope.global = {

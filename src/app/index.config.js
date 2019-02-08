@@ -23,7 +23,7 @@
               'request': function (config) {
                 config.headers = config.headers || {};
                 if ($localStorage.usuarioLogado) {
-                  config.headers.Authorization = $localStorage.usuarioLogado;
+                  config.headers.Authorization = 'Bearer ' + $localStorage.usuarioLogado.token;
                 }
     
                 return config;

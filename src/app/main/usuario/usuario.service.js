@@ -33,6 +33,12 @@
             return ds.$save();
         }
 
+        usuarioFactory.delete = function (usuarioId) {
+            let ds = new api.usuario();
+            ds.id  = usuarioId
+            return ds.$delete();
+        }
+
         return usuarioFactory;
     }
 

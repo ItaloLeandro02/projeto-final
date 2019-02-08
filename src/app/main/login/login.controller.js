@@ -13,6 +13,7 @@
         
         function init(){
             $localStorage.usuarioLogado = ''
+            $localStorage.nomeUsuario = ''
         }
         init();
 
@@ -21,7 +22,8 @@
         function login(){
             
             let sucesso = function(resposta){
-                $localStorage.usuarioLogado = resposta.data
+                $localStorage.usuarioLogado = resposta.data;
+                $localStorage.nomeUsuario = resposta.data.nome;
                 $state.go('app.cliente')
                 toastr.success('Seja Bem Vindo!','OLÁ :)',{progressBar: true, timeOut: 3000})
             }

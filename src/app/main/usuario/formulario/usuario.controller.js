@@ -22,7 +22,8 @@
         vm.tipo                                     = 'password'
         vm.status                                   = 'icon-lock-unlocked-outline'
         vm.mudarSenha                               = mudarSenha
-        
+
+
         vm.data = {
             desativado      : false,
             administrador   : false,
