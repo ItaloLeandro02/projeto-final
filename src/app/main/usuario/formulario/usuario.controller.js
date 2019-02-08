@@ -23,7 +23,7 @@
         vm.status                                   = 'icon-lock-unlocked-outline'
         vm.mudarSenha                               = mudarSenha
         
-        vm.data                                     = {
+        vm.data = {
             desativado      : false,
             administrador   : false,
             permissoes      : []
@@ -40,18 +40,22 @@
                 vm.data.permissoes = vm.data.permissoes.map(function(rotina){ object.rotina = rotina.valor; return object });
             }
 
-            usuarioService.save(vm.data).then(function(resposta) {
+            let sucesso = function(resposta){
                 if (usuarioId) {
                     toastr.info(resposta.message)
                 } else {
                     toastr.success(resposta.message)
                 }
                 $state.go('app.usuario')
-            }).catch(function(error) {
+            }
+
+            let erro = function(resposta) {
                 error.data.errors.forEach(erro => {
                     toastr.error(erro)
                 })
-            })
+            }
+
+            usuarioService.save(vm.data).then(sucesso,erro)
         }
 
         function mudarStatus(status) {

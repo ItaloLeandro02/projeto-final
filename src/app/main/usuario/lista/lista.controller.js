@@ -7,10 +7,11 @@
         .controller('ListaUsuarioController', ListaUsuarioController);
 
     /** @ngInject */
-    function ListaUsuarioController(usuarioService, $state, $stateParams)
+    function ListaUsuarioController(usuarioService, $state, $stateParams, $mdDialog)
     {
         var vm          = this;
-        vm.editar       = editar
+        vm.editar       = editar;
+        vm.view         = view;
 
         function editar(usuarioId) {
             $state.go('app.editarUsuario', {id: usuarioId})
@@ -31,6 +32,10 @@
                     $state.go('app.usuario')
                 })
             }
+        }
+        
+        function view(usuarioId){
+            $state.go('app.viewUsuario', {id : usuarioId})
         }
 
         function init(){
