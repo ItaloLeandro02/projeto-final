@@ -13,9 +13,10 @@
     <table md-table md-row-select="false" multiple ng-model="vm.gridService.selected" md-progress="promise">
       <thead md-head md-order="vm.gridService.query.order" md-on-reorder="vm.gridService.loadData">
         <tr md-row>
-          <th md-column md-order-by="nome"><span>Usuarios</span></th>          
+          <th md-column md-order-by="nome"><span>Usuario</span></th>          
+          <th md-column>Data e Hora</th>
+          <th md-column md-numeric>Rotina</th>
           <th md-column>Ação</th>
-          <th md-column md-numeric>Data e Hora</th>
           <th md-column>
 
           </th>          
@@ -24,9 +25,10 @@
       <tbody md-body>
         <tr md-row md-select="record" md-select-id="id" md-auto-select 
         ng-repeat="record in vm.data">
-        <td md-cell>{{record.nome}}</td>
-          <td md-cell>{{record.acao}}</td>
-          <td md-cell>{{record.data_hora | date: 'dd/MM/yyyy HH:mm'}}</td> 
+        <td md-cell>{{record.usuario.nome}}</td>
+          <td md-cell>{{record.dataHora | date: 'dd/MM/yyyy HH:mm'}}</td>
+          <td md-cell>{{record.rotina}}</td>
+          <td md-cell>{{record.acao}}</td> 
         </tr>
       </tbody>
     </table>

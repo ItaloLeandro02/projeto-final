@@ -29,6 +29,7 @@
                 return config;
               },
               'responseError': function(response) {
+                console.log(response)
                 switch (response.status) {
                   case 401:
                     var stateService = $injector.get('$state');

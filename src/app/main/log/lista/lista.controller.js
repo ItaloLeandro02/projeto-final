@@ -21,8 +21,10 @@
             selected : [],
 
             loadData : function(){
-                return logService.getDataMockup().then(function(records){
-                    vm.data = records
+                return logService.getAll().then(function(records){
+                    console.log(records.data);
+                    
+                    vm.data = records.data
                 })   
             }
         }

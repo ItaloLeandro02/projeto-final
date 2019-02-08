@@ -32,7 +32,7 @@
 
         // Api
         msApiProvider.register('sample', ['app/data/sample/sample.json']);
-
+/*
         // Navigation
         msNavigationServiceProvider.saveItem('fuse', {
             title : 'SAMPLE',
@@ -47,8 +47,8 @@
             /*stateParams: {
                 'param1': 'page'
              },*/
-            translate: 'SAMPLE.SAMPLE_NAV',
+           // translate: 'SAMPLE.SAMPLE_NAV',
             weight   : 1
-        });
+       // });
     }
 })();

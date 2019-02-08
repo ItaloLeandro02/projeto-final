@@ -25,9 +25,9 @@
           </th>          
         </tr>
       </thead>
-      <tbody md-body>
-        <tr md-row md-select="record" md-select-id="id" md-auto-select 
-        ng-repeat="record in vm.data">
+      <tbody md-body id="customers">
+        <tr md-row md-select="record" md-select-id="id" md-auto-select style="cursor:pointer"
+        ng-click="" ng-repeat="record in vm.data">
         <td md-cell>{{record.nome}}</td>
           <td md-cell>{{record.email}}</td>
           <td md-cell>{{record.administrador ? 'Sim' : 'Não'}}</td>

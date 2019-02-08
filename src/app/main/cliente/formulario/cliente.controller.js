@@ -9,8 +9,8 @@
     /** @ngInject */
     function ClienteController(clienteService,$state)
     {
+        
         var vm = this;
-
         vm.novoCliente = novoCliente;
         vm.salvar = salvar;
 
@@ -40,7 +40,7 @@
                 androidPedidos: vm.pedidos,
                 numDispositivosPedidos: vm.numDispositivosPedidos
             }
-            
+
             let sucesso = function(resposta){
                 toastr.success('Cliente adicionado com exito','TUDO CERTO :)')
                 $state.go('app.cliente')
