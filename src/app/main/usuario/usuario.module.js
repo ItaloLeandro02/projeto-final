@@ -20,6 +20,25 @@
                     }
                 }
             })
+            .state('app.viewUsuario', {
+                url    : '/usuario/:id',
+                views  : {
+                    'content@app': {
+                        templateUrl: 'app/main/usuario/formulario/usuario.view.html',
+                        controller : 'UsuarioController as vm'
+                    }
+                },
+                resolve : {
+                    usuarioId : function($stateParams){
+                        
+                        //var auth = new api.autorizacao();
+                        //auth.rotina = '02USU';
+                        //auth.$get(function() {
+                            return $stateParams.id;
+                        //})
+                    }    
+                }
+            })
             .state('app.novoUsuario', {
                 url    : '/usuario/novo',
                 views  : {
@@ -46,11 +65,6 @@
                         templateUrl: 'app/main/usuario/formulario/editar-informacoes.view.html',
                         controller : 'UsuarioController as vm'
                     }
-                },
-                resolve : {
-                    usuarioId : function($stateParams){
-                        return $stateParams.id;
-                    }    
                 }
             })
             .state('app.editarUsuario', {
@@ -62,13 +76,13 @@
                     }
                 },
                 resolve : {
-                    usuarioId : function($stateParams, api){
+                    usuarioId : function($stateParams){
                         
-                        var auth = new api.autorizacao();
-                        auth.rotina = '02USU';
-                        auth.$get(function() {
+                        //var auth = new api.autorizacao();
+                        //auth.rotina = '02USU';
+                        //auth.$get(function() {
                             return $stateParams.id;
-                        })
+                        //})
                     }    
                 }
             })
@@ -79,11 +93,6 @@
                         templateUrl: 'app/main/usuario/formulario/editar-senha.view.html',
                         controller : 'UsuarioController as vm'
                     }
-                },
-                resolve : {
-                    usuarioId : function($stateParams){
-                        return $stateParams.id;
-                    }    
                 }
             });
     

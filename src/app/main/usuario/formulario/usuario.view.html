@@ -1,7 +1,7 @@
 <md-toolbar class="md-accent md-hue-2">
         <div class="md-toolbar-tools">
             <md-icon flex="5" md-font-icon="icon-cog"></md-icon>
-            <span flex="30">Editar Usuário</span>
+            <span flex="30">Dados do Usuário</span>
             <span flex></span>
         </div>
     </md-toolbar>
@@ -11,7 +11,7 @@
                 <md-input-container class="md-icon-float md-block">
                     <label>Nome</label>
                         <md-icon md-font-icon="icon-account" class="name"></md-icon>
-                            <input required ng-model="vm.data.nome" name="nome" minlength="3" md-maxlength="60" type="text">
+                            <input required ng-model="vm.data.nome" name="nome" minlength="3" md-maxlength="60" type="text" ng-disabled="true">
                                 <div ng-messages="vm.form.nome.$error">
                                     <div ng-message="required">O nome é obrigatório!</div>
                                     <div ng-message="minlength">O nome deve conter no mínimo 3 caracteres.</div>
@@ -22,7 +22,7 @@
                 <md-input-container class="md-icon-float md-block" flex>
                     <label>Senha</label>
                         <md-icon md-font-icon="icon-key-variant"></md-icon>
-                            <input required ng-model="vm.data.senha" name="senha" minlength="6" type="{{vm.tipo}}">
+                            <input required ng-model="vm.data.senha" name="senha" minlength="6" type="{{vm.tipo}}" ng-disabled="true">
                                 <div ng-messages="vm.form.senha.$error">
                                     <div ng-message="required">A senha é obrigatória!</div>
                                     <div ng-message="minlength">A senha deve conter no mínimo 6 caracteres.</div>
@@ -36,18 +36,17 @@
                 </div>
                 <div layout="column">
                 <md-input-container class="md-icon-float md-block">
-                    <md-switch ng-model="vm.data.administrador" aria-label="Administrador?" class="md-acept">
+                    <md-switch ng-model="vm.data.administrador" aria-label="Administrador?" class="md-acept" ng-disabled="true">
                         Administrador
                     </md-switch>
                 </md-input-container>
                 <md-input-container class="md-icon-float md-block">
-                    <md-switch ng-model="vm.data.desativado" aria-label="Desativado?" class="md-warn">
+                    <md-switch ng-model="vm.data.desativado" aria-label="Desativado?" class="md-warn" ng-disabled="true">
                         Desativado
                     </md-switch>
                 </md-input-container>
                 <div layout="row" layout-align="end">
-                    <md-button class="md-warn" href="/usuario">Cancelar</md-button> 
-                    <md-button class="md-raised md-accent" type="submit" ng-click="vm.salvar()" ng-disabled="vm.form.$invalid">Salvar</md-button>
+                    <md-button class="md-raised md-accent" href="/usuario">Retornar</md-button> 
                 </div>
                 </div>
         </form>
@@ -63,7 +62,7 @@
         <div layout="column" class="permissoes-padding-left-15" flex>
             <h2>Clientes</h2>
                 <div flex-gt-sm="50" ng-repeat="permissao in vm.rotinasCliente">
-                    <md-checkbox ng-model="permissao.checked" ng-disabled="vm.data.administrador">
+                    <md-checkbox ng-model="permissao.checked" ng-disabled="true">
                     {{ permissao.nome }} 
                     </md-checkbox>
                 </div>
@@ -71,7 +70,7 @@
         <div layout="column" flex>
             <h2>Usuários</h2>
                 <div flex-gt-sm="50" ng-repeat="permissao in vm.rotinasUsuario">
-                    <md-checkbox ng-model="permissao.checked" ng-disabled="vm.data.administrador">
+                    <md-checkbox ng-model="permissao.checked" ng-disabled="true">
                     {{ permissao.nome }}
                     </md-checkbox>
                 </div>
@@ -79,7 +78,7 @@
         <div layout="column" flex>
             <h2>Log</h2>
                 <div flex-gt-sm="50" ng-repeat="permissao in vm.rotinasLog">
-                    <md-checkbox ng-model="permissao.checked" ng-disabled="vm.data.administrador">
+                    <md-checkbox ng-model="permissao.checked" ng-disabled="true">
                     {{ permissao.nome }}
                     </md-checkbox>
                 </div>
@@ -87,7 +86,7 @@
         <div layout="column" flex>
             <h2>Acessos</h2>
                 <div flex-gt-sm="50" ng-repeat="permissao in vm.rotinasAcesso">
-                    <md-checkbox ng-model="permissao.checked" ng-disabled="vm.data.administrador">
+                    <md-checkbox ng-model="permissao.checked" ng-disabled="true">
                     {{ permissao.nome }}
                     </md-checkbox>
                 </div>
