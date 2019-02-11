@@ -9,10 +9,11 @@
     /** @ngInject */
     function ListaUsuarioController(usuarioService, $state, $stateParams, $mdDialog)
     {
-        var vm          = this;
-        vm.editar       = editar;
-        vm.view         = view;
-        vm.excluir      = excluir;
+        var vm              = this;
+        vm.editar           = editar;
+        vm.view             = view;
+        vm.excluir          = excluir;
+        vm.logPagination    = logPagination;
 
         function editar(usuarioId) {
             $state.go('app.editarUsuario', {id: usuarioId})
@@ -20,15 +21,16 @@
 
         vm.gridService = {
             query : {
-                order: 'nome',
-                "limit": 5,
-                "page": 1
+                order: "nome",
+                limit: 10,
+                page: 1,
+                options: [5, 10, 15]
             },
             selected : [],
                         
             loadData : function(){
                 return usuarioService.getAll().then(function(records){
-                    vm.data = records.data
+                    vm.data          = records.data;
                 }).catch((error)=>{
                     $state.go('app.usuario')
                 })
@@ -36,14 +38,11 @@
         }
 
         vm.options = {
-            //autoSelect: true,
             boundaryLinks: true,
-            //largeEditDialog: true,
-            //pageSelector: true,
             rowSelection: true
         };
 
-        vm.logPagination = function (page, limit) {
+        function logPagination(page, limit) {
             console.log('page: ', page);
             console.log('limit: ', limit);
         }

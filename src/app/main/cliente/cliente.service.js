@@ -11,10 +11,12 @@
          
       let clienteFactory = {};
 
-         clienteFactory.getAll = function () {
+         clienteFactory.getAll = function (pagina, limit) {
+            pagina ? pagina : pagina = 1;
+            limit ? limit : limit = 10;
          var ds = new api.cliente();
          
-         return ds.$get();
+         return ds.$get({page: pagina, limit: limit});
          
          }
 
