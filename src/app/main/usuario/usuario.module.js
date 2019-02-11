@@ -76,7 +76,7 @@
                     }
                 },
                 resolve : {
-                    usuarioId : function($stateParams){
+                    usuarioId : function($stateParams,api){
                         
                         var auth = new api.autorizacao();
                         auth.rotina = '02USU';

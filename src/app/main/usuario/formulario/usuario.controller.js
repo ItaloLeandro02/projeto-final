@@ -9,7 +9,7 @@
     /** @ngInject */
     function UsuarioController(usuarioService,usuarioId,siafUtils, $state)
     {
-        var vm                                      = this;
+        var vm              = this;
 
         var rotinas         = siafUtils.getRotinas(); 
         vm.rotinasUsuario   = rotinas.filter(function(item){ return item.valor.substr(2,item.valor.length) == 'USU' });
