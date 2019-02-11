@@ -191,6 +191,7 @@
                 method: 'PUT'
             }
         })
+        api.changePassword = $resource(api.baseUrl + 'api/usuario/alteraSenha')
         api.log = $resource(api.baseUrl + 'api/log/:id', {id : '@id'})
         api.acesso = $resource(api.baseUrl + 'api/acesso/:id', {id : '@id'})
         api.autorizacao = $resource(api.baseUrl + 'api/autorizacao/:rotina', {rotina : '@rotina'}) 

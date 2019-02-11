@@ -75,6 +75,7 @@
         vm.toggleMsNavigationFolded = toggleMsNavigationFolded;
         vm.search = search;
         vm.searchResultClick = searchResultClick;
+        vm.mudarSenha = mudarSenha;
 
         //////////
 
@@ -117,7 +118,9 @@
          */
         function logout()
         {
-            // Do logout here..
+            $localStorage.usuarioLogado = null;
+            toastr.info("Logout efetuad com sucesso!");
+            $state.go("app.login");
         }
 
         /**
@@ -241,6 +244,10 @@
                     $state.go(item.state);
                 }
             }
+        }
+
+        function mudarSenha() {
+            $state.go("app.mudarSenha");
         }
     }
 

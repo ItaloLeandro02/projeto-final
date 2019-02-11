@@ -9,21 +9,21 @@
     /** @ngInject */
     function usuarioService (api) {
         
-        let usuarioFactory = {};    
+        var usuarioFactory = {};    
 
         usuarioFactory.getAll = function () {
-            let ds = new api.usuario();
+            var ds = new api.usuario();
             return ds.$get();
         }
 
         usuarioFactory.getById = function (usuarioId) {
-            let ds = new api.usuario();
+            var ds = new api.usuario();
             ds.id  = usuarioId
             return ds.$get();
         }
 
         usuarioFactory.save = function (usuarioModel) {
-            let ds = new api.usuario();
+            var ds = new api.usuario();
 
             Object.keys(usuarioModel).forEach(function(key) {
                 ds[key] = usuarioModel[key];
@@ -33,8 +33,18 @@
             return ds.$save();
         }
 
+        usuarioFactory.mudarSenha = function(changePasswordModel) {
+            var ds = new api.changePassword();
+            
+            Object.keys(changePasswordModel).forEach(function(key) {
+                ds[key] = changePasswordModel[key];
+            })
+
+            ds.$save();
+        }
+
         usuarioFactory.delete = function (usuarioId) {
-            let ds = new api.usuario();
+            var ds = new api.usuario();
             ds.id  = usuarioId
             return ds.$delete();
         }

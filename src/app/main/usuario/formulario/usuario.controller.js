@@ -72,8 +72,8 @@
 
         function mudarSenha() {
             console.log(vm.data.senha, vm.data.novaSenha,vm.data.confirmaSenha)
-            //Deve verificar se a senha informada pertence ao email do usuario logado atualmente
-            //A API deve verificar a senha digitada como o banco e vereifca a nova senha juntamente com sua confirmação
+            var changePasswordModel = {}
+                changePasswordModel.senha
         }
 
         function preparaVisualizacao() {
