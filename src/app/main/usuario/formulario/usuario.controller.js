@@ -81,8 +81,14 @@
                 if (permissao.rotina.substr(2,permissao.rotina.length) == 'USU') {
                     var rotina = vm.rotinasUsuario.find(function(rotinaUsuario){ return permissao.rotina == rotinaUsuario.valor });
                     rotina ? rotina.checked = true : null
-                } else {
+                }  if (permissao.rotina.substr(2,permissao.rotina.length) == 'CLI') {
                     var rotina = vm.rotinasCliente.find(function(rotinaCliente){ return permissao.rotina == rotinaCliente.valor });
+                    rotina ? rotina.checked = true : null
+                } if (permissao.rotina.substr(2,permissao.rotina.length) == 'ACE') {
+                    var rotina = vm.rotinasAcesso.find(function(rotinaAcesso){ return permissao.rotina == rotinaAcesso.valor });
+                    rotina ? rotina.checked = true : null
+                } if (permissao.rotina.substr(2,permissao.rotina.length) == 'LOG') {
+                    var rotina = vm.rotinasLog.find(function(rotinaLog){ return permissao.rotina == rotinaLog.valor });
                     rotina ? rotina.checked = true : null
                 }
             })
