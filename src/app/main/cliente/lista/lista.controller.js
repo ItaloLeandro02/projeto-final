@@ -14,24 +14,37 @@
         vm.novoCliente = novoCliente;
         vm.editar = editar;
         vm.view = view;
+        vm.logPagination = logPagination;
 
         vm.gridService = {
             query : {
-                order: 'nome',
-                limit: 5,
-                page: 1
+                order: 'cpf',
+                limit: 10,
+                page: 1,
+                options: [5, 10, 15]
             },
             selected : [],
 
             loadData : function(){
-                  
+
                 return clienteService.getAll().then(function(records){
-                    vm.data = records.data.rows
+                    vm.data         = records.data.rows;
+                    vm.data.count   = records.data.count;
                 }).catch((error)=>{
                     toastr.error(error.data.message,"ATENÇÃO")
                     $state.go('app.sample')
                 })
             }
+        }
+
+        function logPagination(page, limit) {
+            console.log('page: ', page);
+            console.log('limit: ', limit);
+
+            return clienteService.getAll(page, limit).then(function(records){
+                vm.data         = records.data.rows;
+                vm.data.count   = records.data.count;
+            })
         }
 
         function init(){

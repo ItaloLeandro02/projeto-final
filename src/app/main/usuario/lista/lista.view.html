@@ -16,7 +16,7 @@
     <table md-table md-row-select="false" multiple ng-model="vm.gridService.selected" md-progress="promise">
       <thead md-head md-order="vm.gridService.query.order" md-on-reorder="vm.gridService.loadData">
         <tr md-row>
-          <th md-column md-order-by="nome"><span>Usuarios</span></th>          
+          <th md-column><span>Usuarios</span></th>          
           <th md-column>Email</th>
           <th md-column md-numeric>Administrador</th>
           <th md-column md-numeric>Desativado</th>
@@ -28,7 +28,7 @@
       </thead>
       <tbody md-body id="customers">
         <tr md-row md-select="record" md-select-id="id" md-auto-select style="cursor:pointer"
-        ng-repeat="record in vm.data">
+        ng-repeat="record in vm.data | orderBy: vm.gridService.query.order | limitTo: vm.gridService.query.limit : (vm.gridService.query.page -1) * vm.gridService.query.limit">
         <td md-cell ng-click="vm.view(record.id)">{{record.nome}}</td>
           <td md-cell>{{record.email}}</td>
           <td md-cell>{{record.administrador ? 'Sim' : 'Não'}}</td>
@@ -45,9 +45,6 @@
       </tbody>
     </table>
   </md-table-container>
-  <md-table-pagination md-limit="vm.gridService.query.limit" md-page="vm.gridService.query.page" md-page-select="vm.options.pageSelector" md-boundary-links="vm.options.boundaryLinks" md-on-paginate="vm.logPagination"></md-table-pagination>
   
-  <md-table-pagination md-limit="query.limit" md-limit-options="[5, 10, 15]" 
-            md-page="vm.gridService.page" md-total="{{vm.data.length}}" 
-            md-on-paginate="vm.gridService.loadData" md-page-select></md-table-pagination>
+  <md-table-pagination md-limit="vm.gridService.query.limit" md-limit-options="vm.gridService.query.options" md-page="vm.gridService.query.page" md-total="{{vm.data.length}}" md-on-paginate="vm.logPagination" md-page-select></md-table-pagination>
   </md-card>
