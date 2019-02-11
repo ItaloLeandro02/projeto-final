@@ -9,11 +9,12 @@
     /** @ngInject */
     function ListaUsuarioController(usuarioService, $state, $stateParams, $mdDialog)
     {
-        var vm          = this;
-        vm.novo         = novo;
-        vm.editar       = editar;
-        vm.view         = view;
-        vm.excluir      = excluir;
+        var vm              = this;
+        vm.novo             = novo;
+        vm.editar           = editar;
+        vm.view             = view;
+        vm.excluir          = excluir;
+        vm.logPagination    = logPagination;
 
         function editar(usuarioId) {
             $state.go('app.editarUsuario', {id: usuarioId})
