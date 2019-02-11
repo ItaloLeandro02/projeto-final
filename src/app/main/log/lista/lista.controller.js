@@ -21,7 +21,7 @@
             selected : [],
 
             loadData : function(){
-                return logService.getAll().then(function(records){
+                return logService.getAll(vm.dataInicial,vm.dataFinal).then(function(records){
                     vm.data = records.data.map(element => {
                         element.rotina = element.rotina +' - '+ acoes[element.rotina]
                         return element
@@ -30,23 +30,37 @@
             }
         }
 
-        vm.openModal = function(ev) {
+        vm.openModal = function(ev,recordLog) {
+            
+            function logController (recordLog,$mdDialog) {
+                var vm = this;
+                vm.record = recordLog
+                let data = new Date(vm.record.dataHora)
+                vm.data = data.toLocaleString()
+
+                vm.hide = function() {
+                    $mdDialog.hide();
+                };
+
+            }
+            
             $mdDialog.show({
-              controller: 'ListaLogController',
+              controller: logController,
               controllerAs: 'vm',
               templateUrl: 'app/main/log/lista/dialog.log.html',
               parent: angular.element(document.body),
               targetEvent: ev,
               clickOutsideToClose:true,
+              locals: {
+                  recordLog : recordLog
+              }
             })
         }
-        
-        vm.hide = function() {
-            $mdDialog.hide();
-        };
 
         function init(){
-            vm.gridService.loadData()
+            vm.dataInicial = new Date();
+            vm.dataFinal = new Date();
+            vm.gridService.loadData();
         }
         init()
         

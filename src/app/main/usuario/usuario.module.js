@@ -31,11 +31,11 @@
                 resolve : {
                     usuarioId : function($stateParams){
                         
-                        //var auth = new api.autorizacao();
-                        //auth.rotina = '02USU';
-                        //auth.$get(function() {
+                        var auth = new api.autorizacao();
+                        auth.rotina = '04USU';
+                        auth.$get(function() {
                             return $stateParams.id;
-                        //})
+                        })
                     }    
                 }
             })
@@ -50,11 +50,11 @@
                 resolve : {
                     usuarioId : function($stateParams, api){
                         
-                        //var auth = new api.autorizacao();
-                        //auth.rotina = '01USU';
-                        //auth.$get(function() {
+                        var auth = new api.autorizacao();
+                        auth.rotina = '01USU';
+                        auth.$get(function() {
                             return $stateParams.id;
-                        //})
+                        })
                     }    
                 }
             })
@@ -78,11 +78,11 @@
                 resolve : {
                     usuarioId : function($stateParams){
                         
-                        //var auth = new api.autorizacao();
-                        //auth.rotina = '02USU';
-                        //auth.$get(function() {
+                        var auth = new api.autorizacao();
+                        auth.rotina = '02USU';
+                        auth.$get(function() {
                             return $stateParams.id;
-                        //})
+                        })
                     }    
                 }
             })

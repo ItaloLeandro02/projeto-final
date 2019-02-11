@@ -10,6 +10,7 @@
     function ListaUsuarioController(usuarioService, $state, $stateParams, $mdDialog)
     {
         var vm          = this;
+        vm.novo         = novo;
         vm.editar       = editar;
         vm.view         = view;
         vm.excluir      = excluir;
@@ -47,6 +48,10 @@
             console.log('page: ', page);
             console.log('limit: ', limit);
         }
+
+        function novo(){
+            $state.go('app.novoUsuario')
+        }
         
         function view(usuarioId){
             $state.go('app.viewUsuario', {id : usuarioId})
@@ -54,8 +59,8 @@
 
         function excluir(ev,usuario){
             let confirmacao = $mdDialog.confirm()
-                  .title('A	guardando confirmação')
-                  .textContent('Confirma a exclusão do usuário ' + usuario.nome)
+                  .title('Aguardando confirmação')
+                  .textContent('Confirma a exclusão do usuário ' + usuario.nome +'?')
                   .ariaLabel('Msg interna do botao')
                   .targetEvent(ev)
                   .ok('Sim')

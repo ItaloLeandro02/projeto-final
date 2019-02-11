@@ -7,9 +7,12 @@
         .config(config);
 
     /** @ngInject */
-    function config($translateProvider,$httpProvider)
+    function config($translateProvider,$httpProvider,$mdDateLocaleProvider)
     {
         // Put your common app configurations here
+        $mdDateLocaleProvider.formatDate = function(date) {
+          return date ? moment(date).format('DD/MM/YYYY') : null;
+        };
 
         // angular-translate configuration
         $translateProvider.useLoader('$translatePartialLoader', {
