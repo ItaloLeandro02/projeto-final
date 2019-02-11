@@ -18,7 +18,7 @@
 
         vm.gridService = {
             query : {
-                order: "numeroserie",
+                order: 'cpf',
                 limit: 10,
                 page: 1,
                 options: [5, 10, 15]
