@@ -50,6 +50,13 @@
             return vm.data.permissoes.concat(rotinas.filter(function(rotina) { return  rotina.checked }));
         }
 
+        function filtraRotinas(permissao, rotinas, filtro) {
+            if (permissao.rotina.substr(2,permissao.rotina.length) == filtro) {
+                var rotina = rotinas.find(function(item){ return permissao.rotina == item.valor });
+                rotina ? rotina.checked = true : null
+            }
+        }
+
         function salvar() {
             if (!vm.data.administrador) {
                 vm.data.permissoes = [];
@@ -75,7 +82,6 @@
 
             usuarioService.save(vm.data).then(sucesso,erro)
         }
-
 
         function alterarSenha() {
             $state.go('app.mudarSenha');
@@ -117,7 +123,6 @@
                 preparaVisualizacaoRotinas(permissao,vm.rotinasAcesso,'ACE');
                 preparaVisualizacaoRotinas(permissao,vm.rotinasLog,'LOG');
             })
-        }
-        
+        }        
     }
 })();
