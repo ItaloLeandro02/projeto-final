@@ -74,38 +74,46 @@
             <span flex></span>
         </div>
     </md-toolbar>
-    <div layout="row"> 
-        <div layout="column" class="permissoes-padding-left-15" flex>
-            <h2>Clientes</h2>
-                <div flex-gt-sm="50" ng-repeat="permissao in vm.rotinasCliente">
-                    <md-checkbox ng-model="permissao.checked" ng-init="permissao.checked=false" ng-disabled="vm.data.administrador">
-                    {{ permissao.nome }} 
-                    </md-checkbox>
-                </div>
+        <div layout="row"> 
+            <div layout="column" class="permissoes-padding-left-15" flex>
+                <md-checkbox ng-model="clientes.checked">
+                    <h2>Clientes</h2>
+                </md-checkbox>
+                    <div flex-gt-sm="50" ng-repeat="permissao in vm.rotinasCliente">
+                        <md-checkbox ng-model="permissao.checked" ng-init="permissao.checked=false" ng-disabled="vm.data.administrador || !clientes.checked">
+                        {{ permissao.nome }} 
+                        </md-checkbox>
+                    </div>
+            </div>
+            <div layout="column" flex>
+                <md-checkbox ng-model="usuarios.checked">
+                    <h2>Usuários</h2>
+                </md-checkbox>
+                    <div flex-gt-sm="50" ng-repeat="permissao in vm.rotinasUsuario">
+                        <md-checkbox ng-model="permissao.checked" ng-init="permissao.checked=false" ng-disabled="vm.data.administrador || !usuarios.checked">
+                        {{ permissao.nome }}
+                        </md-checkbox>
+                    </div>
+            </div>
+            <div layout="column" flex>
+                <md-checkbox ng-model="logs.checked">
+                    <h2>Log</h2>
+                </md-checkbox>
+                    <div flex-gt-sm="50" ng-repeat="permissao in vm.rotinasLog">
+                        <md-checkbox ng-model="permissao.checked" ng-init="permissao.checked=false" ng-disabled="vm.data.administrador || !logs.checked">
+                        {{ permissao.nome }}
+                        </md-checkbox>
+                    </div>
+            </div>
+            <div layout="column" flex>
+                <md-checkbox ng-model="acessos.checked">
+                    <h2>Acessos</h2>
+                </md-checkbox>
+                    <div flex-gt-sm="50" ng-repeat="permissao in vm.rotinasAcesso">
+                        <md-checkbox ng-model="permissao.checked" ng-init="permissao.checked=false" ng-disabled="vm.data.administrador || !acessos.checked">
+                        {{ permissao.nome }}
+                </md-checkbox>
+                    </div>
+            </div>
         </div>
-        <div layout="column" flex>
-            <h2>Usuários</h2>
-                <div flex-gt-sm="50" ng-repeat="permissao in vm.rotinasUsuario">
-                    <md-checkbox ng-model="permissao.checked" ng-init="permissao.checked=false" ng-disabled="vm.data.administrador">
-                    {{ permissao.nome }}
-                    </md-checkbox>
-                </div>
-        </div>
-        <div layout="column" flex>
-            <h2>Log</h2>
-                <div flex-gt-sm="50" ng-repeat="permissao in vm.rotinasLog">
-                    <md-checkbox ng-model="permissao.checked" ng-init="permissao.checked=false" ng-disabled="vm.data.administrador">
-                    {{ permissao.nome }}
-                    </md-checkbox>
-                </div>
-        </div>
-        <div layout="column" flex>
-            <h2>Acessos</h2>
-                <div flex-gt-sm="50" ng-repeat="permissao in vm.rotinasAcesso">
-                    <md-checkbox ng-model="permissao.checked" ng-init="permissao.checked=false" ng-disabled="vm.data.administrador">
-                    {{ permissao.nome }}
-                    </md-checkbox>
-                </div>
-        </div>
-    </div>
   </md-card>
