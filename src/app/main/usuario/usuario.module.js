@@ -75,13 +75,11 @@
                     }
                 },
                 resolve : {
-                    usuarioId : function($stateParams,api){
-                        
+                    usuarioId : async function($stateParams,api){
                         var auth = new api.autorizacao();
                         auth.rotina = '02USU';
-                        var usuarioId = $stateParams.id;
-                        auth.$get();
-                        return usuarioId;
+                        await auth.$get();
+                        return $stateParams.id
                     }    
                 }
             })

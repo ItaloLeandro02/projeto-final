@@ -21,7 +21,7 @@
             selected : [],
 
             loadData : function(){
-                return logService.getAll(vm.dataInicial,vm.dataFinal).then(function(records){
+                return logService.getAll(dataInicial,dataFinal).then(function(records){
                     vm.data = records.data.map(element => {
                         element.rotina = element.rotina +' - '+ acoes[element.rotina]
                         return element
@@ -58,8 +58,6 @@
         }
 
         function init(){
-            vm.dataInicial = new Date();
-            vm.dataFinal = new Date();
             vm.gridService.loadData();
         }
         init()

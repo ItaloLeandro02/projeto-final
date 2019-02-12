@@ -94,26 +94,40 @@
         }
 
         function mudarSenha() {
-            console.log(vm.data.senha, vm.data.novaSenha,vm.data.confirmaSenha)
-            var changePasswordModel = {}
-                changePasswordModel.senha
+            
+            let sucesso = function(resposta){
+                if (resposta.sucess) {
+                    toastr.success('Senha alterada com sucesso','Tudo Certo')
+                    $state.go('app.usuario')
+                }
+            }
+
+            let erro = function(error){
+                toastr.error(error.data.message,'Atenção')
+            }
+            
+            var changePasswordModel = {
+                senhaAtual : vm.data.senha,
+                novaSenha : vm.data.novaSenha,
+                confirmaSenha : vm.data.confirmaSenha 
+            }
+            usuarioService.mudarSenha(changePasswordModel).then(sucesso,erro)
         }
 
+        function preparaVisualizacaoRotinas(permissao,rotinas,sufixo){
+            if (permissao.rotina.substr(2,permissao.rotina.length) == sufixo) {
+                var rotina = rotinas.find(function(item){ return permissao.rotina == item.valor });
+                rotina ? rotina.checked = true : null
+            }                 
+        }
+        
+        
         function preparaVisualizacao() {
             vm.data.permissoes.forEach(function(permissao){
-                if (permissao.rotina.substr(2,permissao.rotina.length) == 'USU') {
-                    var rotina = vm.rotinasUsuario.find(function(rotinaUsuario){ return permissao.rotina == rotinaUsuario.valor });
-                    rotina ? rotina.checked = true : null
-                }  if (permissao.rotina.substr(2,permissao.rotina.length) == 'CLI') {
-                    var rotina = vm.rotinasCliente.find(function(rotinaCliente){ return permissao.rotina == rotinaCliente.valor });
-                    rotina ? rotina.checked = true : null
-                } if (permissao.rotina.substr(2,permissao.rotina.length) == 'ACE') {
-                    var rotina = vm.rotinasAcesso.find(function(rotinaAcesso){ return permissao.rotina == rotinaAcesso.valor });
-                    rotina ? rotina.checked = true : null
-                } if (permissao.rotina.substr(2,permissao.rotina.length) == 'LOG') {
-                    var rotina = vm.rotinasLog.find(function(rotinaLog){ return permissao.rotina == rotinaLog.valor });
-                    rotina ? rotina.checked = true : null
-                }
+                preparaVisualizacaoRotinas(permissao,vm.rotinasUsuario,'USU');
+                preparaVisualizacaoRotinas(permissao,vm.rotinasCliente,'CLI');
+                preparaVisualizacaoRotinas(permissao,vm.rotinasAcesso,'ACE');
+                preparaVisualizacaoRotinas(permissao,vm.rotinasLog,'LOG');
             })
         }
         

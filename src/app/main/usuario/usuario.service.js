@@ -39,8 +39,8 @@
             Object.keys(changePasswordModel).forEach(function(key) {
                 ds[key] = changePasswordModel[key];
             })
-
-            ds.$save();
+ 
+            return ds.$save();
         }
 
         usuarioFactory.delete = function (usuarioId) {

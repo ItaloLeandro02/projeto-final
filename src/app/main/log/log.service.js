@@ -11,6 +11,9 @@
         let logFactory = {};
 
         logFactory.getAll = function (dataIni,dataFim) {
+            if (!dataIni) vm.dataInicial = new Date();
+            if (!dataFim) vm.dataFinal = new Date();
+            
             dataIni = dataIni.toLocaleDateString().split('/').reverse().join('-');
             dataFim = dataFim.toLocaleDateString().split('/').reverse().join('-');;
             let ds = new api.log();
