@@ -27,6 +27,12 @@
                         templateUrl: 'app/main/cliente/formulario/novo.view.html',
                         controller : 'ClienteController as vm'
                     }
+                },
+                resolve : {
+                    clienteId : function($stateParams){
+                        console.log('Modulo: ' + $stateParams.id)
+                        return $stateParams.id;
+                    }    
                 }
             })
             .state('app.editaCliente', {
@@ -42,8 +48,7 @@
                         console.log('Modulo: ' + $stateParams.id)
                         return $stateParams.id;
                     }    
-                }
-                
+                }                
             })
             .state('app.viewCliente', {
                 url    : '/cliente/view/:id',

@@ -32,23 +32,28 @@
 
         // Api
         msApiProvider.register('sample', ['app/data/sample/sample.json']);
-/*
-        // Navigation
-        msNavigationServiceProvider.saveItem('fuse', {
-            title : 'SAMPLE',
-            group : true,
-            weight: 1
-        });
 
-        msNavigationServiceProvider.saveItem('fuse.sample', {
-            title    : 'Sample',
-            icon     : 'icon-tile-four',
-            state    : 'app.sample',
-            /*stateParams: {
-                'param1': 'page'
-             },*/
-           // translate: 'SAMPLE.SAMPLE_NAV',
-            weight   : 1
-       // });
+        //Navigation
+        msNavigationServiceProvider.saveItem('Cliente.incluir', {
+            title : 'E-Commerce',
+            icon  : 'icon-cart',
+            weight: 3
+        });
+        msNavigationServiceProvider.saveItem('Cliente.editar', {
+            title : 'E-Commerce',
+            icon  : 'icon-key',
+            weight: 3
+        });
+        msNavigationServiceProvider.saveItem('Cliente.excluir', {
+            title : 'E-Commerce',
+            icon  : 'icon-cart',
+            weight: 3
+        });
+        msNavigationServiceProvider.saveItem('Cliente.listar', {
+            title : 'Listar',
+            icon  : 'icon-key',
+            weight: 3,
+            state: 'app.cliente'
+        });
     }
 })();

@@ -33,7 +33,8 @@
                 return usuarioService.getAll().then(function(records){
                     vm.data          = records.data;
                 }).catch((error)=>{
-                    $state.go('app.usuario')
+                    toastr.error(error.data.message,"ATENÇÃO")
+                    $state.go('app.sample')
                 })
             }
         }
