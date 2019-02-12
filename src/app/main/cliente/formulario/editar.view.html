@@ -54,12 +54,12 @@
             <md-input-container class="md-block" flex>
                 <label>Possui o Android Gourmet?</label>
                 <md-icon md-font-icon="icon-android"></md-icon>
-                <md-select name="type" ng-model="vm.data.gourmet" ng-value="vm.data.gourmet" required>
+                <md-select name="type" ng-model="vm.data.androidGourmet" ng-value="vm.data.androidGourmet" required>
                   <md-option value="S">Sim</md-option>
                   <md-option value="N">Não</md-option>
                 </md-select>
               </md-input-container>
-              <md-input-container class="md-block" flex="30" ng-value="vm.data.numDispositivos" ng-if="vm.gourmet == 'S'">
+              <md-input-container class="md-block" flex="30" ng-value="vm.data.numDispositivos" ng-if="vm.data.androidGourmet == 'S'">
                 <label>Quantidade de dispositivos</label>
                 <md-icon md-font-icon="icon-cellphone-android"></md-icon>
                 <input ng-model="vm.data.numDispositivos" type="number" step="1">
@@ -75,7 +75,7 @@
                 </md-select>
               </md-input-container>
         
-              <md-input-container class="md-block" flex="30" ng-if="vm.pedidos == 'S'">
+              <md-input-container class="md-block" flex="30" ng-if="vm.data.androidPedidos == 'S'">
                 <label>Dispositivos habilitados</label>
                 <md-icon md-font-icon="icon-cellphone-android"></md-icon>
                 <input ng-model="vm.data.numDispositivosPedidos" type="number" step="1" minlength="1">
@@ -83,7 +83,6 @@
           </div>
           <md-input-container class="md-block" flex>
             <input ng-model="vm.data.observacao" type="text" placeholder="Observaçoes" >
-            <md-icon md-svg-src="img/icons/ic_place_24px.svg"></md-icon>
           </md-input-container>
     </form>
     <div layout="row" layout-align="end">
