@@ -7,7 +7,7 @@
         .controller('UsuarioController', UsuarioController);
 
     /** @ngInject */
-    function UsuarioController(usuarioService,usuarioId,siafUtils, $state)
+    function UsuarioController(usuarioId,usuarioService,siafUtils, $state)
     {
         var vm              = this;
 
@@ -29,6 +29,24 @@
             administrador   : false,
             permissoes      : []
         }
+
+        
+
+        function init(){
+            console.log(usuarioId)
+           // usuarioId = parseInt(usuarioId,10);
+            console.log(usuarioId)
+            if (usuarioId) {
+                return usuarioService.getById(usuarioId).then(function(records){
+                    vm.data = records.data;
+                    preparaVisualizacao();
+                }).catch((error)=>{
+                    toastr.error(error.data.message,'ATENÇÃO')
+                    $state.go('app.sample')
+                })
+            }
+        }
+        init()
 
         function salvar() {
             if (!vm.data.administrador) {
@@ -93,19 +111,6 @@
                 }
             })
         }
-
-        function init(){
-            if (usuarioId) {
-                return usuarioService.getById(usuarioId).then(function(records){
-                    vm.data = records.data;
-
-                    preparaVisualizacao();
-                }).catch((error)=>{
-                    toastr.error(error.data.message,'ATENÇÃO')
-                    $state.go('app.sample')
-                })
-            }
-        }
-        init()
+        
     }
 })();
