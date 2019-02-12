@@ -31,15 +31,16 @@
         function salvar(){
             
             var newCliente = {
-                numeroSerie : vm.numeroSerie,
-                cpf  : vm.cpf,
-                cnpj : vm.cnpj,
-                contrato: vm.contrato,
-                status : vm.status,
-                androidGourmet: vm.gourmet,
-                numDispositivo: vm.numDispositivos,
-                androidPedidos: vm.pedidos,
-                numDispositivosPedidos: vm.numDispositivosPedidos
+                numeroSerie : vm.data.numeroSerie,
+                cpf  : vm.data.cpf,
+                cnpj : vm.data.cnpj,
+                contrato: vm.data.contrato,
+                status : vm.data.status,
+                androidGourmet: vm.data.androidGourmet,
+                numDispositivos: vm.data.numDispositivos,
+                androidPedidos: vm.data.androidPedidos,
+                numDispositivosPedidos: vm.data.numDispositivosPedidos,
+                observacao: vm.data.observacao
             }
 
             let sucesso = function(resposta){
@@ -51,6 +52,7 @@
                 console.log(resposta)
             }
 
+            newCliente.id = clienteId;
             clienteService.save(newCliente).then(sucesso,erro)
         }
         

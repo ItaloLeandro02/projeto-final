@@ -35,7 +35,8 @@
                ds[key] = cliente[key]
             });
 
-            return ds.$save()
+            if (ds.id) return ds.$update();
+            return ds.$save();
          }
       
       return clienteFactory
