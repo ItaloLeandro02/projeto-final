@@ -50,6 +50,13 @@
             return vm.data.permissoes.concat(rotinas.filter(function(rotina) { return  rotina.checked }));
         }
 
+        function filtraRotinas(permissao, rotinas, filtro) {
+            if (permissao.rotina.substr(2,permissao.rotina.length) == filtro) {
+                var rotina = rotinas.find(function(item){ return permissao.rotina == item.valor });
+                rotina ? rotina.checked = true : null
+            }
+        }
+
         function salvar() {
             if (!vm.data.administrador) {
                 vm.data.permissoes = [];
@@ -76,7 +83,6 @@
             usuarioService.save(vm.data).then(sucesso,erro)
         }
 
-
         function alterarSenha() {
             $state.go('app.mudarSenha');
         }
@@ -88,21 +94,11 @@
 
         function preparaVisualizacao() {
             vm.data.permissoes.forEach(function(permissao){
-                if (permissao.rotina.substr(2,permissao.rotina.length) == 'USU') {
-                    var rotina = vm.rotinasUsuario.find(function(rotinaUsuario){ return permissao.rotina == rotinaUsuario.valor });
-                    rotina ? rotina.checked = true : null
-                }  if (permissao.rotina.substr(2,permissao.rotina.length) == 'CLI') {
-                    var rotina = vm.rotinasCliente.find(function(rotinaCliente){ return permissao.rotina == rotinaCliente.valor });
-                    rotina ? rotina.checked = true : null
-                } if (permissao.rotina.substr(2,permissao.rotina.length) == 'ACE') {
-                    var rotina = vm.rotinasAcesso.find(function(rotinaAcesso){ return permissao.rotina == rotinaAcesso.valor });
-                    rotina ? rotina.checked = true : null
-                } if (permissao.rotina.substr(2,permissao.rotina.length) == 'LOG') {
-                    var rotina = vm.rotinasLog.find(function(rotinaLog){ return permissao.rotina == rotinaLog.valor });
-                    rotina ? rotina.checked = true : null
-                }
+                filtraRotinas(permissao, vm.rotinasUsuario, 'USU');
+                filtraRotinas(permissao, vm.rotinasCliente, 'CLI');
+                filtraRotinas(permissao, vm.rotinasAcesso, 'ACE');
+                filtraRotinas(permissao, vm.rotinasLog, 'LOG');
             })
-        }
-        
+        }        
     }
 })();
