@@ -21,7 +21,7 @@
                 }
             })
             .state('app.viewUsuario', {
-                url    : '/usuario/:id',
+                url    : '/usuario/view/:id',
                 views  : {
                     'content@app': {
                         templateUrl: 'app/main/usuario/formulario/usuario.view.html',
@@ -47,15 +47,21 @@
                         controller : 'UsuarioController as vm'
                     }
                 },
-                resolve : {
-                    usuarioId : function($stateParams, api){
-                        
+                /*resolve : {
+                    usuarioId : function($stateParams,api){                        
                         var auth = new api.autorizacao();
                         auth.rotina = '01USU';
-                        auth.$get(function() {
+                        auth.$get(function(){
                             return $stateParams.id;
-                        })
+                        })                        
                     }    
+                }/**/
+                onEnter : function(api){
+                    var auth = new api.autorizacao();
+                        auth.rotina = '01USU';
+                        auth.$get(function(){
+                            return $stateParams.id;
+                        })      
                 }
             })
             .state('app.editarInformacoes', {
@@ -80,8 +86,9 @@
                         
                         var auth = new api.autorizacao();
                         auth.rotina = '02USU';
-                        auth.$get(function() {
-                            return $stateParams.id;
+                        var usuarioId = $stateParams.id;
+                        return auth.$get(function() {
+                            return usuarioId;
                         })
                     }    
                 }
