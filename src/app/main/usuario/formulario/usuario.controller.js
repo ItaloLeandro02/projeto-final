@@ -12,15 +12,12 @@
         var vm              = this;
 
         var rotinas         = siafUtils.getRotinas(); 
-        vm.rotinasUsuario   = rotinas.filter(function(item){ return item.valor.substr(2,item.valor.length) == 'USU' });
-        vm.rotinasCliente   = rotinas.filter(function(item){ return item.valor.substr(2,item.valor.length) == 'CLI' });
-        vm.rotinasLog       = rotinas.filter(function(item){ return item.valor.substr(2,item.valor.length) == 'LOG' });
-        vm.rotinasAcesso    = rotinas.filter(function(item){ return item.valor.substr(2,item.valor.length) == 'ACE' });
+        vm.rotinasUsuario   = atribuiRotinas(rotinas, 'USU')
+        vm.rotinasCliente   = atribuiRotinas(rotinas, 'CLI')
+        vm.rotinasLog       = atribuiRotinas(rotinas, 'LOG')
+        vm.rotinasAcesso    = atribuiRotinas(rotinas, 'ACE')
         
         vm.salvar                                   = salvar;
-        vm.mudarStatus                              = mudarStatus;
-        vm.tipo                                     = 'password';
-        vm.status                                   = 'icon-lock-unlocked-outline';
         vm.mudarSenha                               = mudarSenha;
         vm.alterarSenha                             = alterarSenha;
 
@@ -31,12 +28,8 @@
             permissoes      : []
         }
 
-        
-
         function init(){
-            console.log(usuarioId)
             usuarioId = parseInt(usuarioId,10);
-            console.log(usuarioId)
             if (usuarioId) {
                 return usuarioService.getById(usuarioId).then(function(records){
                     vm.data = records.data;
@@ -48,24 +41,29 @@
             }
         }
         init()
+        
+        function atribuiRotinas(rotinas, filtro) {
+            return rotinas.filter(function(item){ return item.valor.substr(2,item.valor.length) == filtro });
+        }
+
+        function retornarPermissoesSelecionadas(rotinas) {
+            return vm.data.permissoes.concat(rotinas.filter(function(rotina) { return  rotina.checked }));
+        }
 
         function salvar() {
             if (!vm.data.administrador) {
                 vm.data.permissoes = [];
-                var object = {}
-                vm.data.permissoes = vm.data.permissoes.concat(vm.rotinasUsuario.filter(function(rotina) { return  rotina.checked }));
-                vm.data.permissoes = vm.data.permissoes.concat(vm.rotinasCliente.filter(function(rotina) { return  rotina.checked }));
-                vm.data.permissoes = vm.data.permissoes.concat(vm.rotinasLog.filter(function(rotina) { return  rotina.checked }));
-                vm.data.permissoes = vm.data.permissoes.concat(vm.rotinasAcesso.filter(function(rotina) { return  rotina.checked }));
+                var object = {};
+                vm.data.permissoes = retornarPermissoesSelecionadas(vm.rotinasUsuario);
+                vm.data.permissoes = retornarPermissoesSelecionadas(vm.rotinasCliente);
+                vm.data.permissoes = retornarPermissoesSelecionadas(vm.rotinasLog);
+                vm.data.permissoes = retornarPermissoesSelecionadas(vm.rotinasAcesso);
                 vm.data.permissoes = vm.data.permissoes.map(function(rotina){ object.rotina = rotina.valor; return object });
             }
 
             let sucesso = function(resposta){
-                if (usuarioId) {
-                    toastr.info(resposta.message)
-                } else {
-                    toastr.success(resposta.message)
-                }
+                if (usuarioId) toastr.info(resposta.message)
+                toastr.success(resposta.message)
                 $state.go('app.usuario')
             }
 
@@ -78,23 +76,12 @@
             usuarioService.save(vm.data).then(sucesso,erro)
         }
 
-        function mudarStatus(status) {
-            if (status == 'icon-lock-unlocked-outline') {
-                vm.tipo    = 'text';
-                vm.status  = 'icon-lock-outline';
-            }
-            else {
-                vm.tipo    = 'password';
-                vm.status  = 'icon-lock-unlocked-outline';
-            }
-        }
 
         function alterarSenha() {
             $state.go('app.mudarSenha');
         }
 
         function mudarSenha() {
-            console.log(vm.data.senha, vm.data.novaSenha,vm.data.confirmaSenha)
             var changePasswordModel = {}
                 changePasswordModel.senha
         }
