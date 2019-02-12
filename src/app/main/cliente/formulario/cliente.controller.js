@@ -7,7 +7,7 @@
         .controller('ClienteController', ClienteController);
 
     /** @ngInject */
-    function ClienteController(clienteService,$state)
+    function ClienteController(clienteService,$state, clienteId)
     {
         
         var vm = this;
@@ -15,11 +15,12 @@
         vm.salvar = salvar;
 
         function init(){
-            /*if (clienteId) {
+            if (clienteId) {
                 clienteService.getById(clienteId).then(function(resposta){
-                    vm.ds = resposta.data
+                    console.log(resposta.data)
+                    return vm.data = resposta.data
                 })
-            }*/
+            }
         }
         init()
 

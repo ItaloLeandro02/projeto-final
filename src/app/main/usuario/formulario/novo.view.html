@@ -78,7 +78,7 @@
         <div layout="column" class="permissoes-padding-left-15" flex>
             <h2>Clientes</h2>
                 <div flex-gt-sm="50" ng-repeat="permissao in vm.rotinasCliente">
-                    <md-checkbox ng-model="permissao.checked" ng-disabled="vm.data.administrador">
+                    <md-checkbox ng-model="permissao.checked" ng-init="permissao.checked=false" ng-disabled="vm.data.administrador">
                     {{ permissao.nome }} 
                     </md-checkbox>
                 </div>
@@ -86,7 +86,7 @@
         <div layout="column" flex>
             <h2>Usuários</h2>
                 <div flex-gt-sm="50" ng-repeat="permissao in vm.rotinasUsuario">
-                    <md-checkbox ng-model="permissao.checked" ng-disabled="vm.data.administrador">
+                    <md-checkbox ng-model="permissao.checked" ng-init="permissao.checked=false" ng-disabled="vm.data.administrador">
                     {{ permissao.nome }}
                     </md-checkbox>
                 </div>
@@ -94,7 +94,7 @@
         <div layout="column" flex>
             <h2>Log</h2>
                 <div flex-gt-sm="50" ng-repeat="permissao in vm.rotinasLog">
-                    <md-checkbox ng-model="permissao.checked" ng-disabled="vm.data.administrador">
+                    <md-checkbox ng-model="permissao.checked" ng-init="permissao.checked=false" ng-disabled="vm.data.administrador">
                     {{ permissao.nome }}
                     </md-checkbox>
                 </div>
@@ -102,7 +102,7 @@
         <div layout="column" flex>
             <h2>Acessos</h2>
                 <div flex-gt-sm="50" ng-repeat="permissao in vm.rotinasAcesso">
-                    <md-checkbox ng-model="permissao.checked" ng-disabled="vm.data.administrador">
+                    <md-checkbox ng-model="permissao.checked" ng-init="permissao.checked=false" ng-disabled="vm.data.administrador">
                     {{ permissao.nome }}
                     </md-checkbox>
                 </div>

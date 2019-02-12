@@ -54,23 +54,22 @@
             <md-input-container class="md-block" flex>
                 <label>Possui o Android Gourmet?</label>
                 <md-icon md-font-icon="icon-android"></md-icon>
-                <md-select name="type" ng-model="vm.gourmet" required>
+                <md-select name="type" ng-model="vm.data.gourmet" ng-value="vm.data.gourmet" required>
                   <md-option value="S">Sim</md-option>
                   <md-option value="N">Não</md-option>
                 </md-select>
               </md-input-container>
-        
-              <md-input-container class="md-block" flex="30" ng-if="vm.gourmet == 'S'">
+              <md-input-container class="md-block" flex="30" ng-value="vm.data.numDispositivos" ng-if="vm.gourmet == 'S'">
                 <label>Quantidade de dispositivos</label>
                 <md-icon md-font-icon="icon-cellphone-android"></md-icon>
-                <input ng-model="vm.numDispositivos" type="number" step="1">
+                <input ng-model="vm.data.numDispositivos" type="number" step="1">
               </md-input-container>
           
           
             <md-input-container flex class="md-block">
                 <label>Possui o SIAF Pedidos para Android?</label>
                 <md-icon md-font-icon="icon-android"></md-icon>
-                <md-select name="type" ng-model="vm.pedidos" required>
+                <md-select name="type" ng-model="vm.data.androidPedidos" ng-value="vm.data.androidPedidos" required>
                   <md-option value="S">Sim</md-option>
                   <md-option value="N">Não</md-option>
                 </md-select>
@@ -79,11 +78,11 @@
               <md-input-container class="md-block" flex="30" ng-if="vm.pedidos == 'S'">
                 <label>Dispositivos habilitados</label>
                 <md-icon md-font-icon="icon-cellphone-android"></md-icon>
-                <input ng-model="vm.numDispositivosPedidos" type="number" step="1" minlength="1">
+                <input ng-model="vm.data.numDispositivosPedidos" type="number" step="1" minlength="1">
               </md-input-container>
           </div>
           <md-input-container class="md-block" flex>
-            <input ng-model="vm.observacao" type="text" placeholder="Observaçoes" >
+            <input ng-model="vm.data.observacao" type="text" placeholder="Observaçoes" >
             <md-icon md-svg-src="img/icons/ic_place_24px.svg"></md-icon>
           </md-input-container>
     </form>

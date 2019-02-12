@@ -47,7 +47,7 @@
                         controller : 'UsuarioController as vm'
                     }
                 },
-                /*resolve : {
+                resolve : {
                     usuarioId : function($stateParams,api){                        
                         var auth = new api.autorizacao();
                         auth.rotina = '01USU';
@@ -55,13 +55,6 @@
                             return $stateParams.id;
                         })                        
                     }    
-                }/**/
-                onEnter : function(api){
-                    var auth = new api.autorizacao();
-                        auth.rotina = '01USU';
-                        auth.$get(function(){
-                            return $stateParams.id;
-                        })      
                 }
             })
             .state('app.editarInformacoes', {
@@ -87,9 +80,8 @@
                         var auth = new api.autorizacao();
                         auth.rotina = '02USU';
                         var usuarioId = $stateParams.id;
-                        return auth.$get(function() {
-                            return usuarioId;
-                        })
+                        auth.$get();
+                        return usuarioId;
                     }    
                 }
             })

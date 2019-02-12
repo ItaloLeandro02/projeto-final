@@ -19,20 +19,6 @@
                                 </div>
                 </md-input-container>
                 <div layout="row">
-                <md-input-container class="md-icon-float md-block" flex>
-                    <label>Senha</label>
-                        <md-icon md-font-icon="icon-key-variant"></md-icon>
-                            <input required ng-model="vm.data.senha" name="senha" minlength="6" type="{{vm.tipo}}">
-                                <div ng-messages="vm.form.senha.$error">
-                                    <div ng-message="required">A senha é obrigatória!</div>
-                                    <div ng-message="minlength">A senha deve conter no mínimo 6 caracteres.</div>
-                                </div>
-                </md-input-container>
-                <md-input-container>
-                    <md-button aria-label="Exibir senha"> 
-                        <md-icon md-font-icon="{{vm.status}}" ng-click="vm.mudarStatus(vm.status)" flex></md-icon>
-                    </md-button>
-                </md-input-container>
                 </div>
                 <div layout="column">
                 <md-input-container class="md-icon-float md-block">
@@ -47,6 +33,7 @@
                 </md-input-container>
                 <div layout="row" layout-align="end">
                     <md-button class="md-warn" href="/usuario">Cancelar</md-button> 
+                    <md-button class="md-warn" type="submit" ng-click="vm.alterarSenha()" ng-disabled="vm.form.$invalid">Alterar Senha</md-button>
                     <md-button class="md-raised md-accent" type="submit" ng-click="vm.salvar()" ng-disabled="vm.form.$invalid">Salvar</md-button>
                 </div>
                 </div>

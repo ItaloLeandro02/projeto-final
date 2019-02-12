@@ -17,11 +17,12 @@
         vm.rotinasLog       = rotinas.filter(function(item){ return item.valor.substr(2,item.valor.length) == 'LOG' });
         vm.rotinasAcesso    = rotinas.filter(function(item){ return item.valor.substr(2,item.valor.length) == 'ACE' });
         
-        vm.salvar                                   = salvar
-        vm.mudarStatus                              = mudarStatus
-        vm.tipo                                     = 'password'
-        vm.status                                   = 'icon-lock-unlocked-outline'
-        vm.mudarSenha                               = mudarSenha
+        vm.salvar                                   = salvar;
+        vm.mudarStatus                              = mudarStatus;
+        vm.tipo                                     = 'password';
+        vm.status                                   = 'icon-lock-unlocked-outline';
+        vm.mudarSenha                               = mudarSenha;
+        vm.alterarSenha                             = alterarSenha;
 
 
         vm.data = {
@@ -34,7 +35,7 @@
 
         function init(){
             console.log(usuarioId)
-           // usuarioId = parseInt(usuarioId,10);
+            usuarioId = parseInt(usuarioId,10);
             console.log(usuarioId)
             if (usuarioId) {
                 return usuarioService.getById(usuarioId).then(function(records){
@@ -86,6 +87,10 @@
                 vm.tipo    = 'password';
                 vm.status  = 'icon-lock-unlocked-outline';
             }
+        }
+
+        function alterarSenha() {
+            $state.go('app.mudarSenha');
         }
 
         function mudarSenha() {

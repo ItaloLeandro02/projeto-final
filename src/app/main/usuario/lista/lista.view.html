@@ -28,7 +28,7 @@
       </thead>
       <tbody md-body id="customers">
         <tr md-row md-select="record" md-select-id="id" md-auto-select style="cursor:pointer"
-        ng-repeat="record in vm.data | orderBy: vm.gridService.query.order | limitTo: vm.gridService.query.limit : (vm.gridService.query.page -1) * vm.gridService.query.limit">
+        ng-repeat="record in vm.data | orderBy: vm.gridService.query.order">
         <td md-cell ng-click="vm.view(record.id)">{{record.nome}}</td>
           <td md-cell>{{record.email}}</td>
           <td md-cell>{{record.administrador ? 'Sim' : 'Não'}}</td>
@@ -45,6 +45,4 @@
       </tbody>
     </table>
   </md-table-container>
-  
-  <md-table-pagination md-limit="vm.gridService.query.limit" md-limit-options="vm.gridService.query.options" md-page="vm.gridService.query.page" md-total="{{vm.data.length}}" md-on-paginate="vm.logPagination" md-page-select></md-table-pagination>
   </md-card>

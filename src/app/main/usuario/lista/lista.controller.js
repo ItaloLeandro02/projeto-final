@@ -74,12 +74,10 @@
                 if (resposta.success) {
                     toastr.success(resposta.message)
                 }
-                $state.go('app.usuario')
+                vm.gridService.loadData()
             }
-            let erro = function(resposta) {
-                error.data.errors.forEach(erro => {
-                    toastr.error(erro)
-                })
+            let erro = function(error) {
+                toastr.error(error.data.message)
             }
 
             usuarioService.delete(usuarioId).then(sucesso,erro)

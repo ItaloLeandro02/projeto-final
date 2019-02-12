@@ -14,10 +14,17 @@
          clienteFactory.getAll = function (pagina, limit) {
             pagina ? pagina : pagina = 1;
             limit ? limit : limit = 10;
-         var ds = new api.cliente();
+            
+            var ds = new api.cliente();
          
-         return ds.$get({page: pagina, limit: limit});
+            return ds.$get({page: pagina, limit: limit});
+         }
+
+         clienteFactory.getById = function (clienteId) {
+            var ds = new api.cliente();
+            ds.id  = clienteId;
          
+            return ds.$get();
          }
 
          clienteFactory.save = function(cliente) {
