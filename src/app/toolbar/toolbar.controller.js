@@ -7,7 +7,7 @@
         .controller('ToolbarController', ToolbarController);
 
     /** @ngInject */
-    function ToolbarController($rootScope, $q, $state, $timeout, $mdSidenav, $translate, $mdToast, msNavigationService,$localStorage)
+    function ToolbarController($rootScope, $q, $state, $timeout, $mdSidenav, $translate, $mdToast, msNavigationService,$localStorage,$mdDialog)
     {
         var vm = this;
         vm.nome = $localStorage.nomeUsuario
@@ -116,8 +116,22 @@
         /**
          * Logout Function
          */
-        function logout()
+        function logout(ev)
         {
+
+            let confirmacao = $mdDialog.confirm()
+                  .title('Aguardando confirmação')
+                  .textContent('Tem certeza que deseja sair?')
+                  .ariaLabel('Msg interna do botao')
+                  .targetEvent(ev)
+                  .ok('Sim')
+                  .cancel('Não');
+            $mdDialog.show(confirmacao).then(function() {
+                  sair()
+            });            
+        }
+
+        function sair() {
             $localStorage.usuarioLogado = null;
             toastr.info("Logout efetuad com sucesso!");
             $state.go("app.login");
