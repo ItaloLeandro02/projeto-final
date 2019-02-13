@@ -10,7 +10,18 @@
     function ListaLogController(logService, $state, $stateParams,siafUtils,$mdDialog)
     {
         var vm          = this;
+        vm.filtrar      = filtrar;
+        vm.carregaUsuarios = carregaUsuarios;
         let acoes = siafUtils.getAcoes();
+        
+        vm.query = {
+            text : ''
+        }
+
+        function init(){
+            vm.gridService.loadData();
+        }
+        
 
         vm.gridService = {
             query : {
@@ -21,7 +32,7 @@
             selected : [],
 
             loadData : function(){
-                return logService.getAll(dataInicial,dataFinal).then(function(records){
+                return logService.getAll().then(function(records){
                     vm.data = records.data.map(element => {
                         element.rotina = element.rotina +' - '+ acoes[element.rotina]
                         return element
@@ -29,6 +40,7 @@
                 })   
             }
         }
+        init()
 
         vm.openModal = function(ev,recordLog) {
             
@@ -57,10 +69,21 @@
             })
         }
 
-        function init(){
-            vm.gridService.loadData();
+        function filtrar(dataini,datafim){
+            logService.getAll(dataini,datafim).then(function(records){
+                vm.data = records.data.map(element => {
+                    element.rotina = element.rotina +' - '+ acoes[element.rotina]
+                    return element
+                });
+            })   
         }
-        init()
+
+        function carregaUsuarios(){
+            return logService.getUsuarios().then(function(resposta){
+                return resposta.data;
+            })
+        }
+        
         
     }
 })();
