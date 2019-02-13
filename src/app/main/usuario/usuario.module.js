@@ -31,11 +31,11 @@
                 resolve : {
                     usuarioId : function($stateParams){
                         
-                        //var auth = new api.autorizacao();
-                        //auth.rotina = '04USU';
-                        //auth.$get(function() {
+                        var auth = new api.autorizacao();
+                        auth.rotina = '04USU';
+                        auth.$get(function() {
                             return $stateParams.id;
-                        //})
+                        })
                     }    
                 }
             })
@@ -75,10 +75,10 @@
                     }
                 },
                 resolve : {
-                    usuarioId : async function($stateParams,api){
+                    usuarioId : function($stateParams,api){
                         var auth = new api.autorizacao();
                         auth.rotina = '02USU';
-                        await auth.$get();
+                        auth.$get();
                         return $stateParams.id
                     }    
                 }

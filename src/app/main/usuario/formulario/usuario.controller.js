@@ -50,32 +50,27 @@
             return vm.data.permissoes.concat(rotinas.filter(function(rotina) { return  rotina.checked }));
         }
 
-        function filtraRotinas(permissao, rotinas, filtro) {
-            if (permissao.rotina.substr(2,permissao.rotina.length) == filtro) {
-                var rotina = rotinas.find(function(item){ return permissao.rotina == item.valor });
-                rotina ? rotina.checked = true : null
-            }
-        }
-
         function salvar() {
             if (!vm.data.administrador) {
                 vm.data.permissoes = [];
-                var object = {};
                 vm.data.permissoes = retornarPermissoesSelecionadas(vm.rotinasUsuario);
                 vm.data.permissoes = retornarPermissoesSelecionadas(vm.rotinasCliente);
                 vm.data.permissoes = retornarPermissoesSelecionadas(vm.rotinasLog);
                 vm.data.permissoes = retornarPermissoesSelecionadas(vm.rotinasAcesso);
-                vm.data.permissoes = vm.data.permissoes.map(function(rotina){ object.rotina = rotina.valor; return object });
+                vm.data.permissoes = vm.data.permissoes.map(function(rotina){var object = {}; object.rotina = rotina.valor; return object });
             }
 
             let sucesso = function(resposta){
-                if (usuarioId) toastr.info(resposta.message)
-                toastr.success(resposta.message)
+                if (usuarioId) {
+                    toastr.info(resposta.message)
+                } else {
+                    toastr.success(resposta.message)
+                }
                 $state.go('app.usuario')
             }
 
             let erro = function(resposta) {
-                error.data.errors.forEach(erro => {
+                resposta.data.errors.forEach(erro => {
                     toastr.error(erro)
                 })
             }
@@ -113,8 +108,7 @@
                 var rotina = rotinas.find(function(item){ return permissao.rotina == item.valor });
                 rotina ? rotina.checked = true : null
             }                 
-        }
-        
+        }        
         
         function preparaVisualizacao() {
             vm.data.permissoes.forEach(function(permissao){
