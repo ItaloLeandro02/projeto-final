@@ -10,14 +10,14 @@
     function ClienteController(clienteService,$state, clienteId)
     {
         
-        var vm = this;
-        vm.novoCliente = novoCliente;
-        vm.salvar = salvar;
+        var vm          = this;
+        vm.novoCliente  = novoCliente;
+        vm.salvar       = salvar;
 
         function init(){
             if (clienteId) {
                 clienteService.getById(clienteId).then(function(resposta){
-                    console.log(resposta.data)
+                    resposta.data.dataHoraAcesso = new Date(resposta.data.dataHoraAcesso).toLocaleString();
                     return vm.data = resposta.data
                 })
             }
@@ -44,12 +44,18 @@
             }
 
             let sucesso = function(resposta){
-                toastr.success('Cliente adicionado com exito','TUDO CERTO :)')
+                if(clienteId) {
+                    toastr.info("Informações atualizadas com sucesso!")
+                } else {
+                    toastr.success("Cliente incluido com sucesso!")
+                }
                 $state.go('app.cliente')
             }
 
             let erro = function(resposta) {
-                console.log(resposta)
+                resposta.data.errors.forEach(erro => {
+                    toastr.warning(erro)
+                });
             }
 
             newCliente.id = clienteId;

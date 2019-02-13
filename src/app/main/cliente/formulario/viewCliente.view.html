@@ -9,33 +9,26 @@
       
       <md-card class="default-padding m-20">
         <form name="novoClienteForm">
-            <md-input-container class="md-icon-float md-block">
-                <!-- Use floating label instead of placeholder -->
-                <label>Nome</label>
-                <md-icon md-font-icon="icon-account" class="name"></md-icon>
-                <input ng-model="vm.nome" type="text" disabled>
-              </md-input-container>
-              
             <div layout="row">
               <md-input-container class="md-block" flex>
                 <md-icon md-font-icon="icon-document"></md-icon>
-                <input disabled ng-model="vm.cpf" type="text" placeholder="CPF" ui-br-cpf-mask>
+                <input disabled ng-model="vm.data.cpf" type="text" placeholder="CPF" ui-br-cpf-mask>
               </md-input-container>
           
               <md-input-container class="md-block" flex>
                 <!-- Use floating placeholder instead of label -->
                 <md-icon md-font-icon="icon-document" class="email"></md-icon>
-                <input disabled ng-model="vm.cnpj" type="text" placeholder="CNPJ" ui-br-cnpj-mask>
+                <input disabled ng-model="vm.data.cnpj" type="text" placeholder="CNPJ" ui-br-cnpj-mask>
               </md-input-container>
             </div>
             <div layout="row">
                 <md-input-container class="md-block" flex>
-                    <input disabled ng-model="vm.numeroSerie" type="text" placeholder="Número de série"  maxlength="9">
+                    <input disabled ng-model="vm.data.numeroSerie" type="text" placeholder="Número de série"  maxlength="9">
                 </md-input-container>
     
                 <md-input-container class="md-block" flex>
                   <label>Status</label>
-                  <md-select disabled name="type" ng-model="vm.status">
+                  <md-select disabled name="type" ng-model="vm.data.status">
                     <md-option value="S">Ativado</md-option>
                     <md-option value="N">Desativado</md-option>
                   </md-select>
@@ -43,7 +36,7 @@
     
                 <md-input-container class="md-block" flex>
                     <label>Contrato</label>
-                    <md-select disabled name="type" ng-model="vm.contrato">
+                    <md-select disabled name="type" ng-model="vm.data.contrato">
                       <md-option value="M">Manutenção</md-option>
                       <md-option value="A">Aluguel</md-option>
                     </md-select>
@@ -54,39 +47,39 @@
                 <md-input-container class="md-block" flex>
                     <label>Possui o Android Gourmet?</label>
                     <md-icon md-font-icon="icon-android"></md-icon>
-                    <md-select disabled name="type" ng-model="vm.gourmet">
+                    <md-select disabled name="type" ng-model="vm.data.androidGourmet">
                       <md-option value="S">Sim</md-option>
                       <md-option value="N">Não</md-option>
                     </md-select>
                   </md-input-container>
             
-                  <md-input-container class="md-block" flex="30" ng-if="vm.gourmet == 'S'">
+                  <md-input-container class="md-block" flex="30" ng-if="vm.data.androidGourmet == 'S'">
                     <label>Quantidade de dispositivos</label>
                     <md-icon md-font-icon="icon-cellphone-android"></md-icon>
-                    <input disabled ng-model="vm.numDispositivos" type="number" step="1">
+                    <input disabled ng-model="vm.data.numDispositivos" type="number" step="1">
                   </md-input-container>
               
               
                 <md-input-container flex class="md-block">
                     <label>Possui o SIAF Pedidos para Android?</label>
                     <md-icon md-font-icon="icon-android"></md-icon>
-                    <md-select disabled name="type" ng-model="vm.pedidos">
+                    <md-select disabled name="type" ng-model="vm.data.androidPedidos">
                       <md-option value="S">Sim</md-option>
                       <md-option value="N">Não</md-option>
                     </md-select>
                   </md-input-container>
             
-                  <md-input-container class="md-block" flex="30" ng-if="vm.pedidos == 'S'">
+                  <md-input-container class="md-block" flex="30" ng-if="vm.data.androidPedidos == 'S'">
                     <label>Dispositivos habilitados</label>
                     <md-icon md-font-icon="icon-cellphone-android"></md-icon>
-                    <input disabled ng-model="vm.numDispositivosPedidos" type="number" step="1" minlength="1">
+                    <input disabled ng-model="vm.data.numDispositivosPedidos" type="number" step="1" minlength="1">
                   </md-input-container>
               </div>
               <md-input-container class="md-block" flex>
-                <input disabled ng-model="vm.observacao" type="text" placeholder="Observaçoes" >
+                <input disabled ng-model="vm.data.observacao" type="text" placeholder="Observaçoes" >
               </md-input-container>
               <md-input-container class="md-block" flex>
-                    <input disabled ng-model="vm.ultimoAcesso" type="text" placeholder="Último acesso" >
+                    <input disabled ng-model="vm.data.dataHoraAcesso" type="text" placeholder="Último acesso" >
                   </md-input-container>
         </form>
         <div layout="row" layout-align="end">
