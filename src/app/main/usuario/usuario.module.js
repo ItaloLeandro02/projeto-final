@@ -29,13 +29,12 @@
                     }
                 },
                 resolve : {
-                    usuarioId : function($stateParams){
+                    usuarioId : function($stateParams, api){
                         
                         var auth = new api.autorizacao();
                         auth.rotina = '04USU';
-                        auth.$get(function() {
-                            return $stateParams.id;
-                        })
+                        auth.$get();
+                        return $stateParams.id
                     }    
                 }
             })
@@ -55,15 +54,6 @@
                             return $stateParams.id;
                         })                        
                     }    
-                }
-            })
-            .state('app.editarInformacoes', {
-                url    : '/editar-informacoes',
-                views  : {
-                    'content@app': {
-                        templateUrl: 'app/main/usuario/formulario/editar-informacoes.view.html',
-                        controller : 'UsuarioController as vm'
-                    }
                 }
             })
             .state('app.editarUsuario', {
