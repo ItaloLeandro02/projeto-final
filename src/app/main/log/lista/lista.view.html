@@ -10,15 +10,30 @@
     <md-card class="default-padding m-20" flex="20">
       <div flex-gt-xs>
         <h4>Data inicial:</h4>
-        <md-datepicker ng-model="vm.dataInicial" ></md-datepicker>
+        <md-datepicker ng-model="vm.dataInicial"></md-datepicker>
 
         <h4>Data final:</h4>
         <md-datepicker ng-model="vm.dataFinal" ></md-datepicker>
 
-        <md-input-container  flex>
-          <label>Usuário</label>
-          <input type="text" ng-model="vm.usuarioFilter">
-        </md-input-container>
+        <md-autocomplete flex 
+          required
+          md-input-name="autocompleteField"
+          md-input-minlength="1"
+          md-input-maxlength="30"
+          md-no-cache="false"
+          md-selected-item="vm.query.item"
+          md-search-text="vm.nomeConvidado"
+          md-items="usuario in vm.carregaUsuarios()"
+          md-item-text="usuario.nome"
+          md-floating-label="Usuario">
+          <md-item-template>
+              <span md-highlight-text="vm.nomeConvidado">{{usuario.nome}}</span>
+          </md-item-template>
+          <div ng-messages="vm.visitaForm.autocompleteField.$error" ng-if="vm.visitaForm.autocompleteField.$touched">
+              <div ng-message="required">Por favor insira uma pessoa</div>
+              <div ng-message="md-require-match">Visitante sem cadastro!</div>
+          </div>                    
+        </md-autocomplete>
 
         <md-input-container  flex>
           <label>Rotina</label>
@@ -26,14 +41,14 @@
         </md-input-container>
 
       </div>
-      <md-button class="md-raised md-warn">
+      <md-button class="md-raised md-warn" ng-click="vm.filtrar(vm.dataInicial,vm.dataFinal)">
         Filtrar
       </md-button>
     </md-card>
 
     <md-card class="default-padding m-20" flex>
       <!-- exact table from live demo -->
-    <md-table-container>
+    <md-table-container ng-if="vm.data.length > 0">
       <table md-table md-row-select="false" multiple ng-model="vm.gridService.selected" md-progress="promise">
         <thead md-head md-order="vm.gridService.query.order" md-on-reorder="vm.gridService.loadData">
           <tr md-row>
@@ -47,8 +62,13 @@
         </thead>
         <tbody md-body id="customers">
           <tr md-row md-select="record" md-select-id="id" md-auto-select 
-          ng-repeat="record in vm.data" style="cursor:pointer" ng-click="vm.openModal($event,record)">
-          <td md-cell>{{record.usuario.nome}}</td>
+          ng-repeat="record in vm.data"  style="cursor:pointer" ng-click="vm.openModal($event,record)">
+            <div  ng-if="vm.data.length == 0" class="span">
+              <div >
+                  <span >Nenhuma visita agendada no momento :(</span>
+              </div>
+            </div>    
+            <td md-cell>{{record.usuario.nome}}</td>
             <td md-cell>{{record.dataHora | date: 'dd/MM/yyyy HH:mm'}}</td>
             <td md-cell>{{record.rotina}}</td>
           </tr>
